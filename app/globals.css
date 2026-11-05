@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #ffffff;
+  --background-primary: #fefdfb;
+  --background-secondary: #faf8f5;
+  --card: #f7f5f2;
+  --foreground: #121715;
+  --soft: rgba(8, 9, 10, 0.6);
+  --muted: #969e9b;
+  --secondary-text: #485450;
+  --brand: #0c8c5e;
+  --brand-vivid: #1fa77a;
+  --line: #f1f0ee;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-sub: rgba(0, 0, 0, 0.06);
+  --button: #121715;
+  --button-text: #faf8f5;
+  --shadow: 0 30px 80px rgba(18, 23, 21, 0.1);
+  color-scheme: light;
+}
+
+.dark {
+  --background: #08090a;
+  --background-primary: #0a0b0f;
+  --background-secondary: #111216;
+  --card: #0f0f12;
+  --foreground: #faf8f5;
+  --soft: rgba(255, 255, 255, 0.6);
+  --muted: #969e9b;
+  --secondary-text: #d9d7d4;
+  --brand: #18e299;
+  --brand-vivid: #1fa77a;
+  --line: #1e1f21;
+  --border: rgba(255, 255, 255, 0.1);
+  --border-sub: rgba(255, 255, 255, 0.07);
+  --button: #ffffff;
+  --button-text: #08090a;
+  --shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-instrument), "Iowan Old Style", Palatino, "Palatino Linotype", serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --color-background: var(--background);
+  --color-background-primary: var(--background-primary);
+  --color-background-secondary: var(--background-secondary);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-soft: var(--soft);
+  --color-muted: var(--muted);
+  --color-secondary-text: var(--secondary-text);
+  --color-brand: var(--brand);
+  --color-brand-vivid: var(--brand-vivid);
+  --color-line: var(--line);
+  --color-border: var(--border);
+  --color-border-sub: var(--border-sub);
+  --color-button: var(--button);
+  --color-button-text: var(--button-text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+}
+
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--brand) 28%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
