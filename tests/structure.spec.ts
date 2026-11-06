@@ -70,7 +70,7 @@ test("pilot form does not confirm until the API writes", async ({ page }) => {
   await page.getByLabel("Company").fill("Analytical Engines");
   await page.getByLabel("Role").fill("Engineer");
   await page
-    .getByLabel("Current workflow")
+    .getByLabel("Current Review Process")
     .fill("Drawings circulate by email.");
   await page.getByLabel("Fully local").check();
   await page.getByRole("button", { name: "Join the Pilot" }).click();

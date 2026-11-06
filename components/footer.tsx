@@ -29,16 +29,21 @@ export function Footer() {
               <Wordmark />
             </Link>
             <p className="mt-6 max-w-sm text-[14px] leading-6 text-soft">
-              Pilot requests are stored on this site’s server so they can be read. Depth does not publish customer logos, testimonials, or usage statistics.
+              Engineering workflows. Under your control.
             </p>
           </div>
           {columns.map((column) => (
             <div key={column.title}>
-              <h2 className="text-[14px] font-normal leading-5 text-muted">{column.title}</h2>
+              <h2 className="text-[14px] font-normal leading-5 text-muted">
+                {column.title}
+              </h2>
               <ul className="mt-4 space-y-3">
                 {column.links.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="text-[14px] font-medium leading-4 hover:text-brand">
+                    <Link
+                      href={link.href}
+                      className="text-[14px] font-medium leading-4 hover:text-brand"
+                    >
                       {link.label}
                     </Link>
                   </li>

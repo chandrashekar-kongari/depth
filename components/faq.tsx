@@ -4,28 +4,29 @@ import { useState } from "react";
 
 const items = [
   {
-    question: "What is the Depth pilot?",
+    question: "What is Depth?",
     answer:
-      "The pilot is an early invitation to talk about how your team reviews mechanical drawings, and to look at an illustrative review queue. It is not a finished product launch.",
+      "Depth is engineering software being developed to help mechanical and manufacturing teams organize and improve drawing review workflows.",
   },
   {
-    question: "Can we use the drawing review queue today?",
+    question: "What is available in the early pilot?",
     answer:
-      "The queue on this site is an illustrative concept. There is no released Depth application to install from this page.",
+      "Our initial focus is the Drawing Review Queue. We're inviting teams to share their requirements and explore how Depth could fit their review process. Specific pilot capabilities will be confirmed directly with participants.",
   },
   {
-    question: "Where would drawing data live?",
+    question: "Will our engineering files leave our organization?",
     answer:
-      "The intended direction is fully local deployment or organization-hosted deployment, so drawing data stays in the customer environment. That deployment work is not a completed feature.",
+      "Depth is being designed for local and organization-hosted deployment, with engineering data kept within customer-controlled infrastructure. Deployment details and available configurations will be confirmed during the pilot.",
   },
   {
-    question: "Are AI review and 3D-to-2D generation available?",
-    answer: "No. Both are marked coming soon. They are not part of the pilot.",
+    question: "What features are coming next?",
+    answer:
+      "We're planning AI-assisted drawing review and 3D-to-2D drawing generation. These capabilities are not yet generally available.",
   },
   {
-    question: "What happens when I submit the form?",
+    question: "What happens after joining the pilot?",
     answer:
-      "Your answers are written to a file on the server that hosts this site, so they can be read for the pilot. The page confirms the request only after that write succeeds.",
+      "We'll review your application and follow up to learn about your team's drawing review workflow and deployment requirements.",
   },
 ];
 

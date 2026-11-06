@@ -9,21 +9,28 @@ export function Deployment() {
       <div className="mx-auto grid w-full max-w-[1088px] gap-14 px-4 py-24 xl:px-0 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-center lg:py-28">
         <div>
           <h2 className="max-w-[664px] text-[28px] font-medium leading-[34px] tracking-[-0.56px] lg:text-[36px] lg:leading-[40px] lg:tracking-[-0.72px]">
-            Drawing data stays with your team.
+            Your engineering data.
             <br />
-            Local, or hosted by your organization.
+            Your environment.
           </h2>
           <div className="mt-8 max-w-[520px] space-y-4 text-[16px] leading-6 text-soft">
-            <p>Depth is being shaped for two deployment preferences.</p>
             <p>
-              <span className="text-foreground">Fully local.</span> The review queue would run in the team’s own environment.
+              Depth is being designed for deployment within your own
+              environment, so engineering drawings can remain under your
+              organization&apos;s control.
             </p>
             <p>
-              <span className="text-foreground">Organization-hosted.</span> The same queue would be hosted by the customer’s organization, rather than as a shared public service.
+              <span className="text-foreground">Local deployment.</span>{" "}
+              Designed for teams that want to run Depth locally.
             </p>
             <p>
-              The intention is that drawing files and review activity remain inside that customer environment. This is a pilot direction. Depth does not yet offer a completed install, and this site claims no certification or security attestation.
+              <span className="text-foreground">
+                Organization-hosted deployment.
+              </span>{" "}
+              Designed for deployment on infrastructure managed by your
+              organization.
             </p>
+            <p>These are the intended deployment approaches.</p>
           </div>
         </div>
         <motion.figure
@@ -34,38 +41,132 @@ export function Deployment() {
           transition={{ duration: 0.55 }}
         >
           <figcaption className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
-            Illustrative concept
+            Deployment & data control
           </figcaption>
-          <svg viewBox="0 0 640 420" className="mt-4 h-auto w-full text-foreground" role="img" aria-label="Diagram of Depth and drawing data inside a customer environment">
-            <rect x="16" y="28" width="608" height="364" rx="18" fill="none" stroke="currentColor" strokeOpacity="0.35" strokeDasharray="5 6" />
-            <text x="32" y="54" fill="currentColor" fontSize="13" fontFamily="var(--font-inter), Inter, sans-serif">
+          <svg
+            viewBox="0 0 640 420"
+            className="mt-4 h-auto w-full text-foreground"
+            role="img"
+            aria-label="Diagram of Depth and drawing data inside a customer environment"
+          >
+            <rect
+              x="16"
+              y="28"
+              width="608"
+              height="364"
+              rx="18"
+              fill="none"
+              stroke="currentColor"
+              strokeOpacity="0.35"
+              strokeDasharray="5 6"
+            />
+            <text
+              x="32"
+              y="54"
+              fill="currentColor"
+              fontSize="13"
+              fontFamily="var(--font-inter), Inter, sans-serif"
+            >
               Customer environment
             </text>
             <g>
-              <rect x="48" y="150" width="150" height="88" rx="10" fill="none" stroke="currentColor" strokeOpacity="0.45" />
-              <text x="68" y="188" fill="currentColor" fontSize="14" fontFamily="var(--font-inter), Inter, sans-serif">
+              <rect
+                x="48"
+                y="150"
+                width="150"
+                height="88"
+                rx="10"
+                fill="none"
+                stroke="currentColor"
+                strokeOpacity="0.45"
+              />
+              <text
+                x="68"
+                y="188"
+                fill="currentColor"
+                fontSize="14"
+                fontFamily="var(--font-inter), Inter, sans-serif"
+              >
                 Reviewers
               </text>
-              <text x="68" y="210" fill="currentColor" opacity="0.6" fontSize="12" fontFamily="var(--font-inter), Inter, sans-serif">
+              <text
+                x="68"
+                y="210"
+                fill="currentColor"
+                opacity="0.6"
+                fontSize="12"
+                fontFamily="var(--font-inter), Inter, sans-serif"
+              >
                 Inside the boundary
               </text>
-              <rect x="244" y="138" width="164" height="112" rx="10" fill="color-mix(in srgb, var(--brand) 12%, transparent)" stroke="var(--brand)" />
-              <text x="268" y="188" fill="currentColor" fontSize="16" fontFamily="var(--font-inter), Inter, sans-serif">
+              <rect
+                x="244"
+                y="138"
+                width="164"
+                height="112"
+                rx="10"
+                fill="color-mix(in srgb, var(--brand) 12%, transparent)"
+                stroke="var(--brand)"
+              />
+              <text
+                x="268"
+                y="188"
+                fill="currentColor"
+                fontSize="16"
+                fontFamily="var(--font-inter), Inter, sans-serif"
+              >
                 Depth
               </text>
-              <text x="268" y="210" fill="currentColor" opacity="0.65" fontSize="12" fontFamily="var(--font-inter), Inter, sans-serif">
+              <text
+                x="268"
+                y="210"
+                fill="currentColor"
+                opacity="0.65"
+                fontSize="12"
+                fontFamily="var(--font-inter), Inter, sans-serif"
+              >
                 Review queue
               </text>
-              <rect x="452" y="150" width="150" height="88" rx="10" fill="none" stroke="currentColor" strokeOpacity="0.45" />
-              <text x="472" y="188" fill="currentColor" fontSize="14" fontFamily="var(--font-inter), Inter, sans-serif">
+              <rect
+                x="452"
+                y="150"
+                width="150"
+                height="88"
+                rx="10"
+                fill="none"
+                stroke="currentColor"
+                strokeOpacity="0.45"
+              />
+              <text
+                x="472"
+                y="188"
+                fill="currentColor"
+                fontSize="14"
+                fontFamily="var(--font-inter), Inter, sans-serif"
+              >
                 Drawing store
               </text>
-              <text x="472" y="210" fill="currentColor" opacity="0.6" fontSize="12" fontFamily="var(--font-inter), Inter, sans-serif">
+              <text
+                x="472"
+                y="210"
+                fill="currentColor"
+                opacity="0.6"
+                fontSize="12"
+                fontFamily="var(--font-inter), Inter, sans-serif"
+              >
                 Sheets and revisions
               </text>
-              <path d="M198 194h46M408 194h44" stroke="var(--brand)" strokeWidth="1.4" />
+              <path
+                d="M198 194h46M408 194h44"
+                stroke="var(--brand)"
+                strokeWidth="1.4"
+              />
             </g>
-            <g fontFamily="var(--font-inter), Inter, sans-serif" fontSize="13" fill="currentColor">
+            <g
+              fontFamily="var(--font-inter), Inter, sans-serif"
+              fontSize="13"
+              fill="currentColor"
+            >
               <text x="48" y="330">
                 Fully local
               </text>

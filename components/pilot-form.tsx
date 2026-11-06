@@ -3,7 +3,11 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { deploymentOptions, pilotSchema, type PilotInput } from "@/lib/pilot-schema";
+import {
+  deploymentOptions,
+  pilotSchema,
+  type PilotInput,
+} from "@/lib/pilot-schema";
 
 const fieldClass =
   "h-[42px] w-full rounded-[4px] border border-border bg-background px-3 text-[14px] text-foreground outline-none focus:border-brand";
@@ -37,7 +41,10 @@ export function PilotForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       });
-      const payload = (await response.json().catch(() => null)) as { ok?: boolean; id?: string } | null;
+      const payload = (await response.json().catch(() => null)) as {
+        ok?: boolean;
+        id?: string;
+      } | null;
       if (!response.ok || !payload?.ok || !payload.id) {
         setSubmitError("We couldn’t save this request. Nothing was recorded.");
         return;
@@ -50,41 +57,77 @@ export function PilotForm() {
   };
 
   return (
-    <form id="signup" onSubmit={handleSubmit(onSubmit)} className="grid gap-5" noValidate>
+    <form
+      id="signup"
+      onSubmit={handleSubmit(onSubmit)}
+      className="grid gap-5"
+      noValidate
+    >
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="Name" error={errors.name?.message}>
-          <input className={fieldClass} autoComplete="name" {...register("name")} />
+        <Field label="Full Name" error={errors.name?.message}>
+          <input
+            className={fieldClass}
+            autoComplete="name"
+            {...register("name")}
+          />
         </Field>
-        <Field label="Work email" error={errors.email?.message}>
-          <input className={fieldClass} type="email" autoComplete="email" {...register("email")} />
+        <Field label="Work Email" error={errors.email?.message}>
+          <input
+            className={fieldClass}
+            type="email"
+            autoComplete="email"
+            {...register("email")}
+          />
         </Field>
         <Field label="Company" error={errors.company?.message}>
-          <input className={fieldClass} autoComplete="organization" {...register("company")} />
+          <input
+            className={fieldClass}
+            autoComplete="organization"
+            {...register("company")}
+          />
         </Field>
         <Field label="Role" error={errors.role?.message}>
-          <input className={fieldClass} autoComplete="organization-title" {...register("role")} />
+          <input
+            className={fieldClass}
+            autoComplete="organization-title"
+            {...register("role")}
+          />
         </Field>
       </div>
-      <Field label="Current workflow" error={errors.workflow?.message}>
+      <Field label="Current Review Process" error={errors.workflow?.message}>
         <textarea
           className="min-h-32 w-full rounded-[4px] border border-border bg-background px-3 py-3 text-[14px] leading-6 text-foreground outline-none focus:border-brand"
           {...register("workflow")}
         />
       </Field>
       <fieldset>
-        <legend className="mb-2 text-[14px] font-medium">Deployment preference</legend>
+        <legend className="mb-2 text-[14px] font-medium">
+          Deployment Preference
+        </legend>
         <div className="grid gap-2 sm:grid-cols-3">
           {deploymentOptions.map((option) => (
-            <label key={option.value} className="flex h-[42px] items-center gap-2 rounded-[4px] border border-border px-3 text-[14px]">
-              <input type="radio" value={option.value} {...register("deployment")} />
+            <label
+              key={option.value}
+              className="flex h-[42px] items-center gap-2 rounded-[4px] border border-border px-3 text-[14px]"
+            >
+              <input
+                type="radio"
+                value={option.value}
+                {...register("deployment")}
+              />
               {option.label}
             </label>
           ))}
         </div>
-        {errors.deployment ? <p className="mt-2 text-[13px] text-brand">{errors.deployment.message}</p> : null}
+        {errors.deployment ? (
+          <p className="mt-2 text-[13px] text-brand">
+            {errors.deployment.message}
+          </p>
+        ) : null}
       </fieldset>
       <p className="text-[13px] leading-5 text-soft">
-        Submitting writes this form to the site server. You will see a confirmation only after that write succeeds.
+        Tell us a little about your team and your current drawing review
+        process.
       </p>
       <button
         type="submit"
@@ -120,7 +163,9 @@ function Field({
     <label className="block">
       <span className="mb-2 block text-[14px] font-medium">{label}</span>
       {children}
-      {error ? <span className="mt-2 block text-[13px] text-brand">{error}</span> : null}
+      {error ? (
+        <span className="mt-2 block text-[13px] text-brand">{error}</span>
+      ) : null}
     </label>
   );
 }

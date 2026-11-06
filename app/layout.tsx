@@ -21,9 +21,9 @@ const mono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Depth — Engineering drawings. One place to review.",
+  title: "Depth — Engineering drawing reviews, brought into focus.",
   description:
-    "Depth is building a dedicated review queue for mechanical engineering teams, designed for local and organization-hosted deployment.",
+    "Depth is building a dedicated workspace for mechanical drawing reviews, helping teams organize drawings, revisions, and review work while keeping control of their engineering data.",
 };
 
 const themeScript = `
@@ -35,9 +35,15 @@ try {
 } catch (e) {}
 `;
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${instrument.variable} ${mono.variable}`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${inter.variable} ${instrument.variable} ${mono.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>

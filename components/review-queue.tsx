@@ -4,10 +4,10 @@ import { motion, useReducedMotion } from "motion/react";
 import { BracketDrawing, CoverDrawing, ShaftDrawing, Thumb } from "@/components/drawings";
 
 const rows = [
-  { id: "BRG-2041", name: "Bracket, Housing", rev: "C", status: "In review", kind: "bracket" as const },
+  { id: "BRG-2041", name: "Bracket, Housing", rev: "C", status: "In Review", kind: "bracket" as const },
   { id: "SHF-1180", name: "Shaft, Drive", rev: "B", status: "Approved", kind: "shaft" as const },
   { id: "CVR-0904", name: "Cover, End", rev: "A", status: "Changes requested", kind: "cover" as const },
-  { id: "PLT-3312", name: "Plate, Mount", rev: "D", status: "Waiting", kind: "plate" as const },
+  { id: "PLT-3312", name: "Plate, Mount", rev: "D", status: "Awaiting Review", kind: "plate" as const },
 ];
 
 function Label({ children }: { children: React.ReactNode }) {
@@ -45,13 +45,13 @@ export function ReviewQueue() {
     <section id="platform" className="border-t border-line">
       <div className="mx-auto w-full max-w-[1088px] px-4 py-24 xl:px-0 lg:py-28">
         <h2 className="max-w-[664px] text-[28px] font-medium leading-[34px] tracking-[-0.56px] lg:text-[36px] lg:leading-[40px] lg:tracking-[-0.72px]">
-          One queue for every drawing under review.
+          Every drawing. Every revision.
           <br />
-          The sheet, the revision, and the status.
+          A clearer review process.
         </h2>
         <div className="mt-14 grid grid-cols-1 gap-4 lg:mt-16 lg:grid-cols-3">
-          <Card title="Drawing Review Queue" className="lg:col-span-2">
-            <Label>Illustrative concept</Label>
+          <Card title="Review Queue" className="lg:col-span-2">
+            <Label>Illustrative</Label>
             <ul className="mt-4 divide-y divide-border-sub">
               {rows.map((row) => (
                 <li key={row.id} className="flex items-center gap-3 py-3">
@@ -67,14 +67,14 @@ export function ReviewQueue() {
               ))}
             </ul>
           </Card>
-          <Card title="Revision and status">
-            <Label>Illustrative concept</Label>
+          <Card title="Drawing Revision">
+            <Label>Review status</Label>
             <ul className="mt-6 space-y-4">
               {[
-                ["In review", "2"],
+                ["In Review", "2"],
                 ["Changes requested", "1"],
                 ["Approved", "1"],
-                ["Waiting", "1"],
+                ["Awaiting Review", "1"],
               ].map(([label, count]) => (
                 <li key={label} className="flex items-center justify-between border-b border-border-sub pb-3 text-[14px]">
                   <span>{label}</span>
@@ -83,19 +83,19 @@ export function ReviewQueue() {
               ))}
             </ul>
           </Card>
-          <Card title="Part geometry">
-            <Label>Illustrative concept</Label>
+          <Card title="Drawing Details">
+            <Label>Drawing details</Label>
             <div className="mt-3 min-h-0 flex-1">
               <CoverDrawing className="h-full max-h-[240px]" />
             </div>
           </Card>
           <Card title="Who can review">
-            <Label>Illustrative concept</Label>
+            <Label>In Review</Label>
             <ul className="mt-5 space-y-4 text-[14px]">
               {[
-                ["A. Shah", "Design engineer", "Reviewing"],
-                ["M. Ortiz", "Checker", "Waiting"],
-                ["L. Chen", "Manufacturing", "Waiting"],
+                ["A. Shah", "Design engineer", "In Review"],
+                ["M. Ortiz", "Checker", "Awaiting Review"],
+                ["L. Chen", "Manufacturing", "Awaiting Review"],
               ].map(([name, role, state]) => (
                 <li key={name} className="flex items-start justify-between gap-3">
                   <span>
@@ -108,10 +108,10 @@ export function ReviewQueue() {
             </ul>
           </Card>
           <Card title="Revision history">
-            <Label>Illustrative concept</Label>
+            <Label>Drawing revision</Label>
             <ol className="mt-5 space-y-4 border-l border-border pl-4 text-[14px]">
               {[
-                ["Rev C", "12 Mar 2026", "In review"],
+                ["Rev C", "12 Mar 2026", "In Review"],
                 ["Rev B", "02 Feb 2026", "Superseded"],
                 ["Rev A", "14 Jan 2026", "Superseded"],
               ].map(([rev, date, state]) => (
@@ -124,8 +124,8 @@ export function ReviewQueue() {
               ))}
             </ol>
           </Card>
-          <Card title="The sheet stays with the review" className="lg:col-span-3">
-            <Label>Illustrative concept</Label>
+          <Card title="Drawing Details" className="lg:col-span-3">
+            <Label>Drawing details</Label>
             <div className="mt-3 grid gap-4 lg:grid-cols-[1.4fr_0.8fr]">
               <BracketDrawing className="max-h-[250px]" />
               <div className="hidden lg:block">

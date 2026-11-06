@@ -23,19 +23,20 @@ export function Hero() {
           className="max-w-[352px]"
         >
           <p className="inline-flex h-[34px] items-center gap-2 rounded-[2px] border border-border-sub bg-background py-1 pl-2.5 pr-1 text-[14px] text-soft">
-            Pilot
+            AI FOR ENGINEERING
             <span className="rounded-[2px] bg-brand/10 px-1.5 py-0.5 font-mono text-[12px] text-brand">
-              Drawing review
+              TEAMS
             </span>
           </p>
           <h1 className="mt-4 font-display text-[40px] font-normal leading-[44px] tracking-[-0.8px] text-foreground lg:text-[50px] lg:leading-[52px] lg:tracking-[-2px]">
-            Engineering drawings. One place to review.
+            Engineering drawing reviews, brought into focus.
           </h1>
           <p className="mt-4 text-[18px] font-normal leading-6 text-soft">
-            Depth is building a dedicated review queue for mechanical
-            engineering teams, designed for{" "}
+            Depth is building a dedicated workspace for mechanical drawing
+            reviews, helping teams organize drawings, revisions, and review
+            work while{" "}
             <span className="text-foreground">
-              local and organization-hosted deployment.
+              keeping control of their engineering data.
             </span>
           </p>
           <div className="mt-8 flex flex-wrap gap-2">
@@ -54,8 +55,7 @@ export function Hero() {
       >
         <ReviewSurface />
         <p className="sr-only">
-          Illustrative concept of a drawing review queue. This is not a released
-          Depth product.
+          Drawing review queue.
         </p>
       </motion.div>
     </section>
