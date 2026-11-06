@@ -1,18 +1,49 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
-import { BracketDrawing, CoverDrawing, ShaftDrawing, Thumb } from "@/components/drawings";
+import {
+  BracketDrawing,
+  CoverDrawing,
+  ShaftDrawing,
+  Thumb,
+} from "@/components/drawings";
 
 const rows = [
-  { id: "BRG-2041", name: "Bracket, Housing", rev: "C", status: "In Review", kind: "bracket" as const },
-  { id: "SHF-1180", name: "Shaft, Drive", rev: "B", status: "Approved", kind: "shaft" as const },
-  { id: "CVR-0904", name: "Cover, End", rev: "A", status: "Changes requested", kind: "cover" as const },
-  { id: "PLT-3312", name: "Plate, Mount", rev: "D", status: "Awaiting Review", kind: "plate" as const },
+  {
+    id: "BRG-2041",
+    name: "Bracket, Housing",
+    rev: "C",
+    status: "In Review",
+    kind: "bracket" as const,
+  },
+  {
+    id: "SHF-1180",
+    name: "Shaft, Drive",
+    rev: "B",
+    status: "Approved",
+    kind: "shaft" as const,
+  },
+  {
+    id: "CVR-0904",
+    name: "Cover, End",
+    rev: "A",
+    status: "Changes requested",
+    kind: "cover" as const,
+  },
+  {
+    id: "PLT-3312",
+    name: "Plate, Mount",
+    rev: "D",
+    status: "Awaiting Review",
+    kind: "plate" as const,
+  },
 ];
 
 function Label({ children }: { children: React.ReactNode }) {
   return (
-    <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted">{children}</p>
+    <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-foreground-muted">
+      {children}
+    </p>
   );
 }
 
@@ -28,31 +59,36 @@ function Card({
   const reduce = useReducedMotion();
   return (
     <motion.article
-      className={`flex min-h-[360px] flex-col overflow-hidden rounded-xl border border-border-sub bg-card p-8 lg:min-h-[412px] ${className}`}
+      className={`flex min-h-[360px] flex-col overflow-hidden rounded-xl border border-border-secondary bg-background-card p-8 lg:min-h-[412px] ${className}`}
       initial={reduce ? undefined : { opacity: 0, y: 16 }}
       whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className="relative flex min-h-0 flex-1 flex-col">{children}</div>
-      <h3 className="pt-8 text-[16px] font-medium leading-6">{title}</h3>
+      <h3 className="pt-8 text-[16px] font-semibold leading-6">{title}</h3>
     </motion.article>
   );
 }
 
 export function ReviewQueue() {
   return (
-    <section id="platform" className="border-t border-line">
-      <div className="mx-auto w-full max-w-[1088px] px-4 py-24 xl:px-0 lg:py-28">
-        <h2 className="max-w-[664px] text-[28px] font-medium leading-[34px] tracking-[-0.56px] lg:text-[36px] lg:leading-[40px] lg:tracking-[-0.72px]">
+    <section id="platform" data-line>
+      <div className="rail grid-layout relative py-24 lg:py-28">
+        <span
+          className="absolute top-24 left-0 h-6 w-0.5 translate-y-2 bg-brand-base lg:top-28"
+          aria-hidden
+        />
+        <h2 className="max-w-[664px] text-[22px] font-semibold leading-[calc(4/3*1em)] tracking-normal text-foreground-primary lg:text-[34px] lg:leading-[calc(10/9*1em)]">
           Every drawing. Every revision.
-          <br />
-          A clearer review process.
+          <span className="block text-foreground-tertiary">
+            A clearer review process.
+          </span>
         </h2>
         <div className="mt-14 grid grid-cols-1 gap-4 lg:mt-16 lg:grid-cols-3">
           <Card title="Review Queue" className="lg:col-span-2">
             <Label>Illustrative</Label>
-            <ul className="mt-4 divide-y divide-border-sub">
+            <ul className="mt-4 divide-y divide-border-primary">
               {rows.map((row) => (
                 <li key={row.id} className="flex items-center gap-3 py-3">
                   <Thumb kind={row.kind} />
@@ -60,9 +96,13 @@ export function ReviewQueue() {
                     <p className="truncate text-[14px] font-medium leading-5">
                       {row.id} · {row.name}
                     </p>
-                    <p className="text-[12px] leading-4 text-soft">Rev {row.rev}</p>
+                    <p className="text-[12px] leading-4 text-foreground-secondary">
+                      Rev {row.rev}
+                    </p>
                   </div>
-                  <span className="hidden text-[12px] text-secondary-text sm:inline">{row.status}</span>
+                  <span className="hidden text-[12px] text-foreground-tertiary sm:inline">
+                    {row.status}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -76,9 +116,14 @@ export function ReviewQueue() {
                 ["Approved", "1"],
                 ["Awaiting Review", "1"],
               ].map(([label, count]) => (
-                <li key={label} className="flex items-center justify-between border-b border-border-sub pb-3 text-[14px]">
+                <li
+                  key={label}
+                  className="flex items-center justify-between border-b border-border-primary pb-3 text-[14px]"
+                >
                   <span>{label}</span>
-                  <span className="font-mono text-[12px] text-brand">{count}</span>
+                  <span className="font-mono text-[12px] text-brand-base">
+                    {count}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -97,19 +142,26 @@ export function ReviewQueue() {
                 ["M. Ortiz", "Checker", "Awaiting Review"],
                 ["L. Chen", "Manufacturing", "Awaiting Review"],
               ].map(([name, role, state]) => (
-                <li key={name} className="flex items-start justify-between gap-3">
+                <li
+                  key={name}
+                  className="flex items-start justify-between gap-3"
+                >
                   <span>
                     <span className="block font-medium">{name}</span>
-                    <span className="text-[12px] text-soft">{role}</span>
+                    <span className="text-[12px] text-foreground-secondary">
+                      {role}
+                    </span>
                   </span>
-                  <span className="text-[12px] text-secondary-text">{state}</span>
+                  <span className="text-[12px] text-foreground-tertiary">
+                    {state}
+                  </span>
                 </li>
               ))}
             </ul>
           </Card>
           <Card title="Revision history">
             <Label>Drawing revision</Label>
-            <ol className="mt-5 space-y-4 border-l border-border pl-4 text-[14px]">
+            <ol className="mt-5 space-y-4 border-l border-border-secondary pl-4 text-[14px]">
               {[
                 ["Rev C", "12 Mar 2026", "In Review"],
                 ["Rev B", "02 Feb 2026", "Superseded"],
@@ -117,7 +169,7 @@ export function ReviewQueue() {
               ].map(([rev, date, state]) => (
                 <li key={rev}>
                   <p className="font-medium">{rev}</p>
-                  <p className="text-[12px] text-soft">
+                  <p className="text-[12px] text-foreground-secondary">
                     {date} · {state}
                   </p>
                 </li>

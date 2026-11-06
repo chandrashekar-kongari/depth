@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Instrument_Serif, Inter } from "next/font/google";
+import { Inter, Manrope, Source_Code_Pro } from "next/font/google";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import "./globals.css";
@@ -9,15 +9,14 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const instrument = Instrument_Serif({
+const manrope = Manrope({
   subsets: ["latin"],
-  weight: "400",
-  variable: "--font-instrument",
+  variable: "--font-manrope",
 });
 
-const mono = Geist_Mono({
+const mono = Source_Code_Pro({
   subsets: ["latin"],
-  variable: "--font-geist-mono",
+  variable: "--font-source-code-pro",
 });
 
 export const metadata: Metadata = {
@@ -41,7 +40,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${instrument.variable} ${mono.variable}`}
+      className={`${inter.variable} ${manrope.variable} ${mono.variable}`}
       suppressHydrationWarning
     >
       <head>

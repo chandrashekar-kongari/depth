@@ -28,7 +28,7 @@ function Art({ kind }: { kind: "queue" | "assist" | "generate" }) {
     return (
       <svg
         viewBox="0 0 320 220"
-        className="h-full w-full text-foreground"
+        className="h-full w-full text-foreground-primary"
         aria-hidden
       >
         {[0, 1, 2].map((index) => (
@@ -40,7 +40,7 @@ function Art({ kind }: { kind: "queue" | "assist" | "generate" }) {
               width="180"
               height="120"
               rx="6"
-              fill="var(--background)"
+              fill="var(--background-primary)"
               stroke="currentColor"
               strokeOpacity={0.35 + index * 0.2}
             />
@@ -57,15 +57,15 @@ function Art({ kind }: { kind: "queue" | "assist" | "generate" }) {
           width="70"
           height="22"
           rx="4"
-          fill="color-mix(in srgb, var(--brand) 16%, transparent)"
-          stroke="var(--brand)"
+          fill="color-mix(in srgb, var(--brand-base) 16%, transparent)"
+          stroke="var(--brand-base)"
         />
         <text
           x="224"
           y="63"
-          fill="var(--brand)"
+          fill="var(--brand-base)"
           fontSize="11"
-          fontFamily="var(--font-geist-mono), monospace"
+          fontFamily="var(--font-source-code-pro), ui-monospace, monospace"
         >
           REV C
         </text>
@@ -76,7 +76,7 @@ function Art({ kind }: { kind: "queue" | "assist" | "generate" }) {
     return (
       <svg
         viewBox="0 0 320 220"
-        className="h-full w-full text-foreground"
+        className="h-full w-full text-foreground-primary"
         aria-hidden
       >
         <rect
@@ -95,15 +95,21 @@ function Art({ kind }: { kind: "queue" | "assist" | "generate" }) {
           stroke="currentColor"
           strokeOpacity="0.4"
         />
-        <circle cx="196" cy="146" r="10" fill="none" stroke="var(--brand)" />
-        <path d="M196 140v12M190 146h12" stroke="var(--brand)" />
+        <circle
+          cx="196"
+          cy="146"
+          r="10"
+          fill="none"
+          stroke="var(--brand-base)"
+        />
+        <path d="M196 140v12M190 146h12" stroke="var(--brand-base)" />
       </svg>
     );
   }
   return (
     <svg
       viewBox="0 0 320 220"
-      className="h-full w-full text-foreground"
+      className="h-full w-full text-foreground-primary"
       aria-hidden
     >
       <path
@@ -117,10 +123,10 @@ function Art({ kind }: { kind: "queue" | "assist" | "generate" }) {
         stroke="currentColor"
         strokeOpacity="0.3"
       />
-      <path d="M210 64h62v92h-62z" fill="none" stroke="var(--brand)" />
+      <path d="M210 64h62v92h-62z" fill="none" stroke="var(--brand-base)" />
       <path
         d="M222 96h38M222 116h28"
-        stroke="var(--brand)"
+        stroke="var(--brand-base)"
         strokeOpacity="0.7"
       />
     </svg>
@@ -130,37 +136,46 @@ function Art({ kind }: { kind: "queue" | "assist" | "generate" }) {
 export function Direction() {
   const reduce = useReducedMotion();
   return (
-    <section id="direction" className="border-t border-line">
-      <div className="mx-auto w-full max-w-[1088px] px-4 py-24 xl:px-0 lg:py-28">
-        <h2 className="max-w-[664px] text-[28px] font-medium leading-[34px] tracking-[-0.56px] lg:text-[36px] lg:leading-[40px] lg:tracking-[-0.72px]">
+    <section id="direction" data-line>
+      <div className="rail grid-layout relative py-24 lg:py-28">
+        <span
+          className="absolute top-24 left-0 h-6 w-0.5 translate-y-2 bg-brand-base lg:top-28"
+          aria-hidden
+        />
+        <h2 className="max-w-[664px] text-[22px] font-semibold leading-[calc(4/3*1em)] tracking-normal text-foreground-primary lg:text-[34px] lg:leading-[calc(10/9*1em)]">
           Starting with reviews.
-          <br />
-          Building toward deeper engineering intelligence.
+          <span className="block text-foreground-tertiary">
+            Building toward deeper engineering intelligence.
+          </span>
         </h2>
         <div className="mt-14 grid gap-4 lg:mt-16 lg:grid-cols-3">
           {items.map((item, index) => (
             <motion.article
               key={item.title}
-              className="flex flex-col overflow-hidden rounded-xl border border-border-sub bg-card"
+              className="flex min-h-[412px] flex-col overflow-hidden rounded-xl border border-border-secondary bg-background-card"
               initial={reduce ? undefined : { opacity: 0, y: 18 }}
               whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: reduce ? 0 : index * 0.06 }}
+              transition={{
+                duration: 0.22,
+                delay: reduce ? 0 : index * 0.04,
+                ease: [0.22, 1, 0.36, 1],
+              }}
             >
-              <div className="relative h-[280px] border-b border-border-sub bg-background-secondary sm:h-[320px]">
-                <p className="absolute left-5 top-4 font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
+              <div className="relative h-[280px] border-b border-border-primary bg-background-secondary sm:h-[320px]">
+                <p className="absolute left-5 top-4 font-mono text-[10px] uppercase tracking-[0.14em] text-foreground-muted">
                   Product direction
                 </p>
                 <Art kind={item.art} />
               </div>
               <div className="flex flex-1 flex-col p-6">
-                <p className="text-[12px] font-medium uppercase tracking-[0.08em] text-brand">
+                <p className="text-[12px] font-medium uppercase tracking-[0.08em] text-brand-base">
                   {item.kicker}
                 </p>
-                <h3 className="mt-3 text-[16px] font-medium leading-6">
+                <h3 className="mt-3 text-[16px] font-semibold leading-6">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-[14px] leading-6 text-soft">
+                <p className="mt-3 text-[14px] leading-6 text-foreground-secondary">
                   {item.body}
                 </p>
               </div>

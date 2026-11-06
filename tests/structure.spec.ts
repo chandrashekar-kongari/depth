@@ -23,8 +23,8 @@ test("desktop structure stays close to the measured reference", async ({
   const lineHeight = await h1.evaluate(
     (element) => getComputedStyle(element).lineHeight,
   );
-  expect(fontSize).toBe("50px");
-  expect(lineHeight).toBe("52px");
+  expect(fontSize).toBe("46px");
+  expect(lineHeight).toBe("46px");
 
   const button = page
     .locator("main section")
@@ -58,7 +58,7 @@ test("mobile hero uses the smaller headline", async ({ page }) => {
   const fontSize = await page
     .locator("h1")
     .evaluate((element) => getComputedStyle(element).fontSize);
-  expect(fontSize).toBe("40px");
+  expect(fontSize).toBe("34px");
   await page.getByRole("button", { name: "Open menu" }).click();
   await expect(page.getByRole("navigation", { name: "Mobile" })).toBeVisible();
 });

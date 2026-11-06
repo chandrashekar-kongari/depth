@@ -38,7 +38,7 @@ export function ThemeControl() {
         <label
           key={option}
           className={`cursor-pointer rounded-[4px] px-2.5 py-1 text-[13px] capitalize ${
-            choice === option ? "bg-card text-foreground" : "text-muted"
+            choice === option ? "bg-background-secondary text-foreground-primary" : "text-foreground-muted"
           }`}
         >
           <input

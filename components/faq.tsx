@@ -34,49 +34,54 @@ export function Faq() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="border-t border-line">
-      <div className="mx-auto w-full max-w-[768px] px-4 py-24">
-        <h2 className="text-[32px] font-medium leading-[40px] tracking-[-0.64px]">
-          Frequently asked questions
-        </h2>
-        <div className="mt-8 border-t border-line">
-          {items.map((item, index) => {
-            const expanded = open === index;
-            return (
-              <div key={item.question} className="border-b border-line">
-                <button
-                  type="button"
-                  className="flex w-full items-center justify-between gap-6 py-5 text-left text-[16px] font-normal leading-6"
-                  aria-expanded={expanded}
-                  onClick={() => setOpen(expanded ? null : index)}
-                >
-                  {item.question}
-                  <svg
-                    viewBox="0 0 16 16"
-                    className={`h-4 w-4 shrink-0 transition-transform ${expanded ? "rotate-180" : ""}`}
-                    aria-hidden
-                  >
-                    <path
-                      d="M3.5 6 8 10.5 12.5 6"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.4"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </button>
+    <section id="faq" data-line>
+      <div className="rail grid-layout py-24">
+        <div className="mx-auto w-full max-w-[768px]">
+          <h2 className="text-[22px] font-semibold leading-[calc(4/3*1em)] tracking-normal text-foreground-primary lg:text-[34px] lg:leading-[calc(10/9*1em)]">
+            Frequently asked questions
+          </h2>
+          <div className="mt-8 border-t border-border-line">
+            {items.map((item, index) => {
+              const expanded = open === index;
+              return (
                 <div
-                  className={`grid transition-[grid-template-rows] duration-200 ${expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
+                  key={item.question}
+                  className="border-b border-border-line"
                 >
-                  <div className="overflow-hidden" aria-hidden={!expanded}>
-                    <p className="pb-5 pr-8 text-[15px] leading-6 text-soft">
-                      {item.answer}
-                    </p>
+                  <button
+                    type="button"
+                    className="flex w-full items-center justify-between gap-6 py-5 text-left text-[16px] font-normal leading-6"
+                    aria-expanded={expanded}
+                    onClick={() => setOpen(expanded ? null : index)}
+                  >
+                    {item.question}
+                    <svg
+                      viewBox="0 0 16 16"
+                      className={`h-4 w-4 shrink-0 transition-transform ${expanded ? "rotate-180" : ""}`}
+                      aria-hidden
+                    >
+                      <path
+                        d="M3.5 6 8 10.5 12.5 6"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.4"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                  </button>
+                  <div
+                    className={`grid transition-[grid-template-rows] duration-200 ${expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
+                  >
+                    <div className="overflow-hidden" aria-hidden={!expanded}>
+                      <p className="pb-5 pr-8 text-[16px] leading-6 text-foreground-secondary">
+                        {item.answer}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

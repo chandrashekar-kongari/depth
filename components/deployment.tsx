@@ -5,26 +5,31 @@ import { motion, useReducedMotion } from "motion/react";
 export function Deployment() {
   const reduce = useReducedMotion();
   return (
-    <section id="deployment" className="border-t border-line">
-      <div className="mx-auto grid w-full max-w-[1088px] gap-14 px-4 py-24 xl:px-0 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-center lg:py-28">
+    <section id="deployment" data-line>
+      <div className="rail grid-layout relative grid gap-14 py-24 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-center lg:py-28">
+        <span
+          className="absolute top-24 left-0 h-6 w-0.5 translate-y-2 bg-brand-base lg:top-28"
+          aria-hidden
+        />
         <div>
-          <h2 className="max-w-[664px] text-[28px] font-medium leading-[34px] tracking-[-0.56px] lg:text-[36px] lg:leading-[40px] lg:tracking-[-0.72px]">
+          <h2 className="max-w-[664px] text-[22px] font-semibold leading-[calc(4/3*1em)] tracking-normal text-foreground-primary lg:text-[34px] lg:leading-[calc(10/9*1em)]">
             Your engineering data.
-            <br />
-            Your environment.
+            <span className="block text-foreground-tertiary">
+              Your environment.
+            </span>
           </h2>
-          <div className="mt-8 max-w-[520px] space-y-4 text-[16px] leading-6 text-soft">
+          <div className="mt-8 max-w-[520px] space-y-4 text-[16px] leading-6 text-foreground-secondary">
             <p>
               Depth is being designed for deployment within your own
               environment, so engineering drawings can remain under your
               organization&apos;s control.
             </p>
             <p>
-              <span className="text-foreground">Local deployment.</span>{" "}
+              <span className="text-foreground-primary">Local deployment.</span>{" "}
               Designed for teams that want to run Depth locally.
             </p>
             <p>
-              <span className="text-foreground">
+              <span className="text-foreground-primary">
                 Organization-hosted deployment.
               </span>{" "}
               Designed for deployment on infrastructure managed by your
@@ -34,18 +39,18 @@ export function Deployment() {
           </div>
         </div>
         <motion.figure
-          className="relative overflow-hidden rounded-xl border border-border-sub bg-card p-6 sm:p-8"
+          className="relative overflow-hidden rounded-xl border border-border-secondary bg-background-card p-6 sm:p-8"
           initial={reduce ? undefined : { opacity: 0, y: 16 }}
           whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.55 }}
+          transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
         >
-          <figcaption className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
+          <figcaption className="font-mono text-[10px] uppercase tracking-[0.14em] text-foreground-muted">
             Deployment & data control
           </figcaption>
           <svg
             viewBox="0 0 640 420"
-            className="mt-4 h-auto w-full text-foreground"
+            className="mt-4 h-auto w-full text-foreground-primary"
             role="img"
             aria-label="Diagram of Depth and drawing data inside a customer environment"
           >
@@ -105,8 +110,8 @@ export function Deployment() {
                 width="164"
                 height="112"
                 rx="10"
-                fill="color-mix(in srgb, var(--brand) 12%, transparent)"
-                stroke="var(--brand)"
+                fill="color-mix(in srgb, var(--brand-base) 12%, transparent)"
+                stroke="var(--brand-base)"
               />
               <text
                 x="268"
@@ -158,7 +163,7 @@ export function Deployment() {
               </text>
               <path
                 d="M198 194h46M408 194h44"
-                stroke="var(--brand)"
+                stroke="var(--brand-base)"
                 strokeWidth="1.4"
               />
             </g>

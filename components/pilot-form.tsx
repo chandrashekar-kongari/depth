@@ -10,7 +10,7 @@ import {
 } from "@/lib/pilot-schema";
 
 const fieldClass =
-  "h-[42px] w-full rounded-[4px] border border-border bg-background px-3 text-[14px] text-foreground outline-none focus:border-brand";
+  "h-[42px] w-full rounded-[4px] border border-border-secondary bg-base-default px-3 text-[14px] text-foreground-primary";
 
 export function PilotForm() {
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -96,7 +96,7 @@ export function PilotForm() {
       </div>
       <Field label="Current Review Process" error={errors.workflow?.message}>
         <textarea
-          className="min-h-32 w-full rounded-[4px] border border-border bg-background px-3 py-3 text-[14px] leading-6 text-foreground outline-none focus:border-brand"
+          className="min-h-32 w-full rounded-[4px] border border-border-secondary bg-base-default px-3 py-3 text-[14px] leading-6 text-foreground-primary"
           {...register("workflow")}
         />
       </Field>
@@ -108,7 +108,7 @@ export function PilotForm() {
           {deploymentOptions.map((option) => (
             <label
               key={option.value}
-              className="flex h-[42px] items-center gap-2 rounded-[4px] border border-border px-3 text-[14px]"
+              className="flex h-[42px] items-center gap-2 rounded-[4px] border border-border-secondary px-3 text-[14px]"
             >
               <input
                 type="radio"
@@ -120,29 +120,29 @@ export function PilotForm() {
           ))}
         </div>
         {errors.deployment ? (
-          <p className="mt-2 text-[13px] text-brand">
+          <p className="mt-2 text-[13px] text-error">
             {errors.deployment.message}
           </p>
         ) : null}
       </fieldset>
-      <p className="text-[13px] leading-5 text-soft">
+      <p className="text-[13px] leading-5 text-foreground-secondary">
         Tell us a little about your team and your current drawing review
         process.
       </p>
       <button
         type="submit"
         disabled={isSubmitting}
-        className="inline-flex h-[42px] w-fit items-center rounded-[4px] bg-button px-4 text-[14px] font-medium text-button-text disabled:opacity-60"
+        className="inline-flex h-[42px] w-fit items-center rounded-[4px] bg-base-invert px-4 text-[14px] font-medium text-foreground-invert shadow-button-sm transition-opacity duration-200 ease-out-soft disabled:opacity-60"
       >
         {isSubmitting ? "Sending…" : "Join the Pilot"}
       </button>
       {submitError ? (
-        <p role="alert" className="text-[14px] text-foreground">
+        <p role="alert" className="text-[14px] text-foreground-primary">
           {submitError}
         </p>
       ) : null}
       {savedId ? (
-        <p role="status" className="text-[14px] text-foreground">
+        <p role="status" className="text-[14px] text-foreground-primary">
           Request received. Reference {savedId}.
         </p>
       ) : null}
@@ -164,7 +164,7 @@ function Field({
       <span className="mb-2 block text-[14px] font-medium">{label}</span>
       {children}
       {error ? (
-        <span className="mt-2 block text-[13px] text-brand">{error}</span>
+        <span className="mt-2 block text-[13px] text-error">{error}</span>
       ) : null}
     </label>
   );

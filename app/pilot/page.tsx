@@ -9,14 +9,14 @@ export const metadata: Metadata = {
 
 export default function PilotPage() {
   return (
-    <main className="mx-auto w-full max-w-[768px] px-4 py-20">
-      <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
+    <main className="mx-auto w-full max-w-[768px] px-[var(--grid-margin)] py-20">
+      <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-foreground-muted">
         Early pilot
       </p>
-      <h1 className="mt-4 font-display text-[40px] leading-[44px] tracking-[-0.8px] lg:text-[50px] lg:leading-[52px] lg:tracking-[-2px]">
+      <h1 className="mt-4 text-[34px] font-medium leading-[calc(10/9*1em)] tracking-normal text-foreground-primary lg:text-[46px] lg:leading-[46px]">
         Help shape the future of drawing reviews.
       </h1>
-      <p className="mt-4 text-[18px] leading-7 text-soft">
+      <p className="mt-4 text-[16px] leading-6 text-foreground-secondary">
         We&apos;re inviting mechanical engineering and manufacturing teams to
         explore Depth through an early pilot. Tell us how your team reviews
         drawings and what would make the process better.
