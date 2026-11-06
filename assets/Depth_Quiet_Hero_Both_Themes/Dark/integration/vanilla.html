@@ -1,0 +1,12 @@
+<!-- Put these 3 files inside /public/depth-hero and keep your marketing copy outside the video. -->
+<div class="depth-hero-media">
+  <video autoplay muted loop playsinline preload="metadata" poster="/depth-hero/depth-hero-poster.png" aria-label="Illustrative Depth revision comparison product animation">
+    <source src="/depth-hero/depth-quiet-hero.webm" type="video/webm" />
+    <source src="/depth-hero/depth-quiet-hero.mp4" type="video/mp4" />
+  </video>
+</div>
+<style>
+.depth-hero-media{width:100%;overflow:hidden;border-radius:16px;background:#090b0f}
+.depth-hero-media video{display:block;width:100%;height:auto}
+@media(prefers-reduced-motion:reduce){.depth-hero-media video{display:none}.depth-hero-media{aspect-ratio:16/9;background:#090b0f url('/depth-hero/depth-hero-poster.png') center/contain no-repeat}}
+</style>

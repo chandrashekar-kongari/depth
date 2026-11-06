@@ -1,20 +1,42 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
+import { useEffect, useRef } from "react";
 import { ButtonLink } from "@/components/button-link";
-import { LineField } from "@/components/line-field";
+
+function syncHeroVideos(root: HTMLElement) {
+  root.querySelectorAll("video").forEach((video) => {
+    const hidden = getComputedStyle(video).display === "none";
+    if (hidden) {
+      video.pause();
+      return;
+    }
+    void video.play().catch(() => {});
+  });
+}
 
 export function Hero() {
   const reduce = useReducedMotion();
+  const mediaRef = useRef<HTMLDivElement>(null);
   const rise = reduce
     ? {}
     : { initial: { opacity: 0, y: 12 }, animate: { opacity: 1, y: 0 } };
 
+  useEffect(() => {
+    const root = mediaRef.current;
+    if (!root) return;
+    const sync = () => syncHeroVideos(root);
+    sync();
+    const observer = new MutationObserver(sync);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="relative overflow-x-clip">
-      <div className="absolute inset-0 [mask-image:linear-gradient(90deg,transparent_0%,transparent_34%,#000_43%,#000_100%)]">
-        <LineField />
-      </div>
       <div className="grid-layout relative z-10 px-4 pb-16 pt-10 min-[1120px]:px-0 lg:pb-24 lg:pt-20">
         <motion.div
           {...rise}
@@ -52,18 +74,61 @@ export function Hero() {
           </div>
         </motion.div>
         <motion.div
-          className="relative z-10 mt-12 hidden lg:mt-16 lg:block"
+          className="relative z-10 mt-12 lg:mt-16"
           initial={reduce ? undefined : { opacity: 0, y: 16 }}
           animate={reduce ? undefined : { opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
         >
-          <img
-            src="/illustrations/floating-cad-review.png"
-            alt="Illustrative drawing review"
-            width={1672}
-            height={941}
-            className="h-auto w-full"
-          />
+          <div
+            ref={mediaRef}
+            className="relative isolate w-full overflow-hidden rounded-2xl bg-[#f5f7f5] motion-reduce:aspect-video motion-reduce:bg-[url('/depth-hero/depth-hero-poster-light.png')] motion-reduce:bg-contain motion-reduce:bg-center motion-reduce:bg-no-repeat dark:bg-[#090b0f] dark:motion-reduce:bg-[url('/depth-hero/depth-hero-poster.png')]"
+          >
+            <div className="motion-reduce:hidden">
+              <video
+                className="block h-auto w-full dark:hidden"
+                aria-label="Illustrative Depth engineering drawing revision review"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                poster="/depth-hero/depth-hero-poster-light.png"
+                width={1920}
+                height={1080}
+              >
+                <source
+                  src="/depth-hero/depth-quiet-hero-light.webm"
+                  type="video/webm"
+                />
+                <source
+                  src="/depth-hero/depth-quiet-hero-light.mp4"
+                  type="video/mp4"
+                />
+              </video>
+              <video
+                className="hidden h-auto w-full dark:block"
+                aria-hidden
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                poster="/depth-hero/depth-hero-poster.png"
+                width={1920}
+                height={1080}
+              >
+                <source
+                  src="/depth-hero/depth-quiet-hero.webm"
+                  type="video/webm"
+                />
+                <source src="/depth-hero/depth-quiet-hero.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <p className="sr-only">
+              Illustrative product concept with scripted example findings; not a
+              live AI engineering analysis.
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Depth — Focused drawing review motion (light)</title>
+<style>
+:root{--ink:#101316;--muted:#8a9298;--line:#292e33;--teal:#50d2b5;--teal-soft:#d9f5ec;--amber:#d89d5f}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#090b0f}
+body{font-family:Inter,Inter Display,ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
+#holder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#stage{position:relative;width:1600px;height:900px;flex:0 0 auto;transform-origin:center center;background:#090b0f;color:#f5f5f6;overflow:hidden}
+#stage:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 720px 480px at 52% 43%,#1723244d,transparent 100%),radial-gradient(ellipse 450px 390px at 87% 17%,#15403616,transparent 100%);pointer-events:none}
+.topline{position:absolute;left:98px;right:98px;top:38px;height:1px;background:linear-gradient(90deg,transparent,#a7bbb02b 22%,#a7bbb02b 78%,transparent)}
+.bottomnote{position:absolute;bottom:29px;width:100%;text-align:center;color:#525f62;font-size:12px;letter-spacing:.02em;font-weight:500}
+.product{position:absolute;left:82px;top:81px;width:1436px;height:737px;background:#111418;border:1px solid #30353a;border-radius:18px;overflow:hidden;box-shadow:0 24px 100px #0008,0 1px 2px #ffffff09;opacity:0}
+.product-top{height:72px;display:flex;align-items:center;border-bottom:1px solid #292f33;background:#14171b;padding:0 29px;gap:23px}
+.mark{width:29px;height:27px;display:block}.brand{font-size:23px;font-weight:715;letter-spacing:-1.25px;color:#f5f7f6;margin-left:-13px}
+.vrule{width:1px;height:27px;background:#30373b;margin-left:2px}.crumb{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:510;color:#869096}.crumb strong{color:#e2e7e8;font-weight:560}
+.spacer{flex:1}.preview-badge{display:flex;align-items:center;gap:7px;font-size:11.5px;color:#8b9598;letter-spacing:.02em}.preview-badge:before{content:"";display:block;height:6px;width:6px;border-radius:50%;background:#6b8580}
+.pagebar{height:72px;padding:0 30px;display:flex;align-items:center;border-bottom:1px solid #292f33;gap:24px;background:#111418}
+.page-name{font-size:17px;font-weight:620;letter-spacing:-.4px;color:#eef1ef}.page-desc{font-size:12px;color:#8c9698;margin-top:5px}.revision-tabs{display:flex;align-items:center;border:1px solid #353a3f;border-radius:8px;padding:4px;gap:4px}.tab{font-size:12px;font-weight:570;color:#929b9d;padding:8px 14px;border-radius:5px;transition:background .2s,color .2s}.tab.active{background:#303938;color:#e4fff6;box-shadow:0 1px 2px #0005}.vs{font-size:10px;color:#697779;font-weight:700;letter-spacing:.1em}
+.compare-btn{height:37px;display:flex;align-items:center;gap:10px;border-radius:7px;padding:0 14px;border:1px solid #3b4b46;background:#192a25;color:#9ee3cf;font-size:12px;font-weight:620}
+.compare-btn .spin{width:12px;height:12px;border-radius:50%;border:1.5px solid #7bd3ba;border-top-color:transparent;transform:rotate(0deg)}
+.main{height:593px;display:grid;grid-template-columns:1008px 1fr;min-height:0}
+.drawing-area{padding:19px 20px 21px;background:#171b1e;position:relative;min-width:0}
+.sheet{height:100%;border-radius:6px;overflow:hidden;background:#fcfcfa;border:1px solid #d6dcda;box-shadow:0 7px 17px #00000035;position:relative}
+.sheet svg{display:block;width:100%;height:100%}
+.sheet-header{position:absolute;left:30px;top:25px;color:#717a7e;font-size:10px;font-weight:720;letter-spacing:.16em;z-index:2}
+.sheet-scale{position:absolute;right:27px;top:24px;font-size:10px;color:#a2aba9;font-weight:590;z-index:2}
+.sheet-foot{position:absolute;bottom:19px;left:25px;color:#9ca5a3;font-size:10px;font-weight:550;letter-spacing:.03em}
+.markpin{position:absolute;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transform:translate(-50%,-50%) scale(.7);background:#def6eb;color:#0e876d;border:1px solid #a2d9c4;box-shadow:0 4px 13px #235f4a21;z-index:5;font-size:15px;font-weight:800}
+.markpin.warn{background:#fff1df;color:#a66d33;border-color:#eacc9f}
+#pin1{left:63.3%;top:37.9%}#pin2{left:80.8%;top:50.5%}#pin3{left:49.5%;top:60.8%}
+.focus-ring{position:absolute;width:105px;height:105px;border-radius:50%;border:1.3px solid #2eb38e;opacity:0;transform:translate(-50%,-50%) scale(.8);pointer-events:none;z-index:3;box-shadow:inset 0 0 0 18px #2cbf8910}
+#ring1{left:63.3%;top:37.9%}#ring2{left:80.8%;top:50.5%;width:90px;height:90px}#ring3{left:49.5%;top:60.8%;width:150px;height:90px;border-radius:22px;border-color:#d0a466;box-shadow:inset 0 0 0 12px #dfb17712}
+.paper-wipe{position:absolute;top:0;bottom:0;left:0;width:2px;opacity:0;background:#59b99b;box-shadow:0 0 0 1px #ffffff90,0 0 20px #62d5a84f;z-index:4;pointer-events:none}
+.aside{background:#14181b;border-left:1px solid #2c3235;display:flex;flex-direction:column;min-width:0;position:relative}
+.aside-top{height:188px;padding:29px 28px 17px;border-bottom:1px solid #293033}
+.eyebrow{font-size:10.5px;letter-spacing:.155em;color:#81928d;font-weight:690}.aside-title{font-size:23px;letter-spacing:-.8px;font-weight:640;margin-top:17px;color:#f1f4f1}.aside-sub{font-size:12.5px;color:#8f9a9b;margin-top:9px;line-height:1.4}
+.progressline{height:3px;background:#2c3335;margin-top:22px;border-radius:5px;overflow:hidden}.progress-fill{height:100%;width:0;background:#56d1af}
+.finding-list{padding:19px 17px 12px;flex:1;display:flex;flex-direction:column;gap:12px;min-height:0}
+.finding{height:92px;display:flex;gap:12px;align-items:flex-start;padding:17px 15px;background:#1b2023;border-radius:10px;border:1px solid #343b3d;opacity:0;transform:translateY(12px);box-shadow:0 2px 6px #00000018}
+.f-icon{height:27px;width:27px;border:1px solid #38695c;border-radius:8px;color:#86d8ba;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:710;flex:0 0 auto;background:#17372c}
+.f-icon.warn{color:#e5ad71;border-color:#705437;background:#382a20;font-size:17px}
+.f-main{font-size:13.5px;line-height:1.25;font-weight:620;letter-spacing:-.2px;color:#e8eeed}.f-sub{font-size:11.5px;margin-top:7px;color:#929d9d;line-height:1.33}.f-mini{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#74b6a0;margin-bottom:7px;font-weight:760}.f-mini.amber{color:#c5a07d}
+.composer-foot{height:85px;border-top:1px solid #303639;padding:14px 18px 19px}
+.composer{display:flex;align-items:center;height:46px;border:1px solid #3a4144;border-radius:9px;background:#1b2024;padding:0 8px 0 15px;gap:10px}
+.plus{font-size:21px;color:#778488;font-weight:350}.prompt{flex:1;font-size:12px;color:#849196}.send{height:30px;width:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;background:#315c50;color:#b5e9da;font-size:17px}
+#completed{color:#d5eee6}#compare-status{opacity:.7}
+@media(prefers-reduced-motion:reduce){.product{opacity:1}}
+
+/* DEPTH — LIGHT THEME: restrained, high-contrast product surfaces.
+   The drawing sheet remains unchanged between themes for fidelity. */
+:root{--ink:#1c2726;--muted:#737f7e;--line:#dde5e1;--teal:#137b68;--teal-soft:#e7f7f1;--amber:#ac733c}
+html,body{background:#f5f7f5}
+#stage{background:#f5f7f5;color:#1e2928}
+#stage:before{background:radial-gradient(ellipse 800px 530px at 52% 43%,#e8f2ed9c,transparent 100%),radial-gradient(ellipse 440px 370px at 88% 16%,#edf5f18c,transparent 100%)}
+.topline{background:linear-gradient(90deg,transparent,#d7dfdb 22%,#d7dfdb 78%,transparent)}
+.bottomnote{color:#99a5a1}
+.product{background:#fff;border-color:#d9e1df;box-shadow:0 29px 100px #344e4617,0 4px 16px #344e460b,0 1px 3px #1a2b270a}
+.product-top{background:#fcfdfc;border-bottom-color:#e4eae7}
+.brand{color:#1a2927}
+.vrule{background:#dbe4df}
+.crumb{color:#7b8884}.crumb strong{color:#354640}
+.preview-badge{color:#7d8c86}.preview-badge:before{background:#88a39a}
+.pagebar{background:#fff;border-bottom-color:#e6ebe9}
+.page-name{color:#263330}.page-desc{color:#82908a}
+.revision-tabs{border-color:#dee5e2;background:#f7f9f8}
+.tab{color:#7a8984}.tab.active{color:#176c59;background:#fff;border:1px solid #dce8e2;padding:7px 13px;box-shadow:0 1px 4px #174b3712}
+.vs{color:#a2ada8}
+.compare-btn{background:#ebf7f1;border-color:#c9e5d8;color:#1a755e}
+.compare-btn .spin{border-color:#2e987d;border-top-color:transparent}
+.drawing-area{background:#f5f8f6}
+.sheet{background:#fff;border-color:#dbe3df;box-shadow:0 7px 22px #213f3310}
+.sheet-header{color:#697772}.sheet-scale{color:#97a19d}.sheet-foot{color:#899892}
+.aside{background:#fcfdfc;border-left-color:#e3ebe7}
+.aside-top{border-bottom-color:#e8eeeb}
+.eyebrow{color:#72857e}.aside-title{color:#22302d}.aside-sub{color:#7b8984}
+.progressline{background:#e7eeea}.progress-fill{background:#1a9b78}
+.finding{background:#fff;border-color:#e0e8e4;box-shadow:0 2px 6px #30473e08}
+.f-icon{background:#e9f8f0;border-color:#c4e8d7;color:#147b60}
+.f-icon.warn{background:#fff6e9;border-color:#ead3af;color:#ac7134}
+.f-main{color:#293a34}.f-sub{color:#788781}.f-mini{color:#238b69}.f-mini.amber{color:#ad7840}
+.composer-foot{border-top-color:#e5ede9}
+.composer{border-color:#dce5e0;background:#fff;box-shadow:0 1px 3px #253d3006}
+.plus{color:#82928b}.prompt{color:#83908a}.send{background:#e1f2e9;color:#24725e}
+#completed{color:#1d7c64}
+
+</style>
+</head>
+<body>
+<div id="holder"><div id="stage">
+  <div class="topline"></div>
+  <main class="product" id="product">
+    <div class="product-top">
+      <svg class="mark" viewBox="0 0 290 262" aria-hidden="true"><defs><linearGradient id="markGradient" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#80f7d7"/><stop offset="1" stop-color="#19ac8b"/></linearGradient></defs><path d="M67 0 H172 C244 0 290 43 290 103 C290 187 231 248 137 262 H0 L39 155 H168 C196 155 212 140 212 116 C212 99 196 93 172 93 H34 Z" fill="url(#markGradient)"/><path d="M39 155 H212 C205 200 177 251 137 262 H0 Z" fill="#21c8a4" opacity=".55"/></svg>
+      <span class="brand">depth</span><span class="vrule"></span>
+      <div class="crumb"><span>Engineering</span><span style="color:#475357">/</span><strong>Drawing review</strong></div>
+      <div class="spacer"></div><div class="preview-badge">Product concept</div>
+    </div>
+    <div class="pagebar">
+      <div><div class="page-name">Mounting bracket <span style="color:#87928f;font-weight:440">· BRG-2041</span></div><div class="page-desc">Revision comparison <span style="padding:0 8px;color:#505d61">/</span> Sheet 01</div></div>
+      <div class="spacer"></div>
+      <div class="revision-tabs"><span id="tabA" class="tab active">Rev A</span><span class="vs">TO</span><span id="tabB" class="tab">Rev B</span></div>
+      <div class="compare-btn"><span class="spin" id="busyIcon"></span><span id="compare-status">Compare revisions</span></div>
+    </div>
+    <div class="main">
+      <div class="drawing-area">
+        <div class="sheet" id="sheet">
+        <span class="sheet-header">BRG-2041 · MOUNTING BRACKET</span><span class="sheet-scale">UNITS MM  ·  SCALE 1:2</span>
+        <svg viewBox="0 0 965 548" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Technical drawing of a mounting bracket with dimensional callouts and section view">
+        <defs><marker id="arr" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto-start-reverse"><path d="M0 3.5L7 0V7Z" fill="#859093"/></marker></defs>
+        <path d="M40 74H925" stroke="#e9ecea"/><text x="50" y="113" font-size="11" font-weight="650" letter-spacing="1.2" fill="#737e80">TOP VIEW</text>
+        <g stroke="#354248" stroke-width="1.9" fill="none" stroke-linejoin="round">
+          <rect x="150" y="183" width="535" height="213" rx="3"/><circle cx="203" cy="236" r="14"/><circle cx="627" cy="236" r="14"/><circle cx="203" cy="343" r="14"/><circle cx="627" cy="343" r="14"/><rect x="354" y="270" width="141" height="40" rx="20"/>
+          <path d="M150 208L175 183 M660 183L685 208 M150 371L175 396 M660 396L685 371" stroke-width="1.1"/>
+        </g>
+        <g stroke="#a4adaf" stroke-width="1" fill="none" stroke-dasharray="11 5 2 5"><path d="M122 291H714 M418 155V422"/><path d="M203 211V261M178 236H228 M627 211V261 M602 236H652 M203 318V368M178 343H228M627 318V368M602 343H652"/></g>
+        <g stroke="#9ca6a6" fill="none" stroke-width="1"><path d="M150 169V133 M685 169V133 M150 165H150 M150 183H123 M150 396H123 M203 404V447 M627 404V447"/><path d="M150 145H685M123 183V396M203 432H627" marker-start="url(#arr)" marker-end="url(#arr)"/>
+        </g>
+        <g fill="#667174" font-size="12.2" font-weight="520" text-anchor="middle"><text x="417" y="136">125.0</text><text x="111" y="289" transform="rotate(-90 111 289)">52.0</text><text x="415" y="426">96.0</text></g>
+        <path d="M625 223L733 157H809" stroke="#8a999a" stroke-width="1.1" fill="none"/>
+        <g id="revAcallout" opacity="1"><text x="806" y="149" font-size="13.5" fill="#445255" text-anchor="end" font-weight="650">4X Ø6.0 THRU</text></g>
+        <g id="revBcallout" opacity="0"><text x="806" y="149" font-size="13.5" fill="#197c65" text-anchor="end" font-weight="650">4X Ø6.5 THRU</text></g>
+        <text x="789" y="212" font-size="11" font-weight="650" fill="#737e80">SECTION A—A</text>
+        <g stroke="#455358" stroke-width="1.4" fill="none"><rect x="772" y="245" width="143" height="80"/><path d="M797 245V325 M894 245V325"/><path d="M820 245V325 M870 245V325" stroke-dasharray="6 4"/></g>
+        <g stroke="#889398" stroke-width=".9" fill="none"><path d="M764 343H924M772 329V352M915 329V352"/></g><text x="844" y="362" text-anchor="middle" font-size="11" fill="#879093">SECTION A–A</text>
+        <path d="M428 283V370H510" fill="none" stroke="#8a999a" stroke-width="1.1"/><text x="519" y="374" font-size="11.5" fill="#65747a">SLOT 44 × 12</text>
+        <g stroke="#dce3e0" stroke-width="1" fill="none"><rect x="32" y="458" width="900" height="74"/><path d="M32 478H932M635 458V532M802 478V532M32 499H635"/></g>
+        <g fill="#646f73"><text x="44" y="472" font-size="10" letter-spacing=".8" font-weight="710">GENERAL NOTES</text><text x="650" y="472" font-size="9.5" font-weight="690" letter-spacing=".6">DRAWING NUMBER</text><text x="44" y="491" font-size="10.6">1. DEBURR ALL SHARP EDGES</text><text x="44" y="517" font-size="10.6">MATERIAL 6061-T6   ·   FINISH ANODIZE</text><text x="650" y="500" font-size="14.5" font-weight="680" fill="#303d42">BRG-2041</text><text x="650" y="518" font-size="9.5" letter-spacing=".4">MOUNTING BRACKET</text><text x="818" y="492" font-size="9.5">REVISION</text><text id="revTitle" x="818" y="515" font-size="17" font-weight="730" fill="#303d42">A</text></g>
+        </svg>
+        <div class="paper-wipe" id="wipe"></div>
+        <div class="focus-ring" id="ring1"></div><div class="focus-ring" id="ring2"></div><div class="focus-ring" id="ring3"></div>
+        <div class="markpin" id="pin1">✓</div><div class="markpin" id="pin2">✓</div><div class="markpin warn" id="pin3">!</div>
+        <span class="sheet-foot">ILLUSTRATIVE ENGINEERING DRAWING</span>
+        </div>
+      </div>
+      <aside class="aside">
+        <div class="aside-top"><div class="eyebrow">REVIEW SUMMARY</div><div class="aside-title" id="headline">Reviewing changes</div><div class="aside-sub" id="subline">Checking three engineering comments</div><div class="progressline"><div class="progress-fill" id="progressbar"></div></div></div>
+        <div class="finding-list">
+          <div class="finding" id="finding1"><div class="f-icon">✓</div><div><div class="f-mini">RESOLVED</div><div class="f-main">Hole callout updated</div><div class="f-sub">Diameter now reads Ø6.5 THRU</div></div></div>
+          <div class="finding" id="finding2"><div class="f-icon">✓</div><div><div class="f-mini">RESOLVED</div><div class="f-main">Section view corrected</div><div class="f-sub">Section agrees with the plan view</div></div></div>
+          <div class="finding" id="finding3"><div class="f-icon warn">!</div><div><div class="f-mini amber">NEEDS ATTENTION</div><div class="f-main">Slot tolerance missing</div><div class="f-sub">Position tolerance not specified</div></div></div>
+        </div>
+        <div class="composer-foot"><div class="composer"><div class="plus">+</div><span class="prompt">Ask about this review…</span><div class="send">↑</div></div></div>
+      </aside>
+    </div>
+  </main>
+</div></div>
+<script>
+const TOTAL=13.0;let playing=true;let start=performance.now();
+const el=id=>document.getElementById(id);
+const clamp=(n)=>Math.max(0,Math.min(1,n));const smooth=(n)=>{n=clamp(n);return n*n*(3-2*n)};const show=(t,a,b)=>smooth((t-a)/(b-a));
+function applyFrame(t){
+  t=Math.max(0,Math.min(TOTAL,t));
+  const opening=show(t,0,.7), ending=1-show(t,12.35,13.0);
+  el('product').style.opacity=String(opening*ending);
+  let v=show(t,2.1,2.85); let sw=show(t,1.8,3.15);
+  el('tabA').classList.toggle('active',t<2.45);el('tabB').classList.toggle('active',t>=2.45);
+  el('revAcallout').setAttribute('opacity',String(1-v));el('revBcallout').setAttribute('opacity',String(v));
+  el('revTitle').textContent=t<2.45?'A':'B';
+  el('wipe').style.opacity=String(.33*show(t,1.9,2.1)*(1-show(t,3.0,3.25)));
+  el('wipe').style.left=(sw*100).toFixed(1)+'%';
+  const times=[[3.05,3.5],[4.8,5.25],[6.55,7.05]];
+  times.forEach(([a,b],i)=>{
+    const v=show(t,a,b);const card=el('finding'+(i+1)); const pin=el('pin'+(i+1)); const ring=el('ring'+(i+1));
+    card.style.opacity=v;card.style.transform=`translateY(${(1-v)*13}px)`;
+    pin.style.opacity=v;pin.style.transform=`translate(-50%,-50%) scale(${.7+.3*v})`;
+    ring.style.opacity=.38*v;ring.style.transform=`translate(-50%,-50%) scale(${.85+.15*v})`;
+  });
+  const overall=show(t,2.35,7.9);
+  el('progressbar').style.width=(overall*67).toFixed(2)+'%';
+  if(t>=7.8){el('headline').textContent='2 of 3 addressed';el('subline').textContent='1 item still needs attention';}
+  else if(t>=2.4){el('headline').textContent='Comparing revisions';el('subline').textContent='Checking three engineering comments';}
+  else{el('headline').textContent='Reviewing changes';el('subline').textContent='Checking three engineering comments';}
+  el('compare-status').textContent=t>=7.8?'Review complete':t>=2.35?'Review in progress':'Compare revisions';
+  el('busyIcon').style.transform=t>=7.8?'none':`rotate(${Math.round(t*300)}deg)`;
+  el('busyIcon').style.border=t>=7.8?'none':'1.5px solid #7bd3ba';
+  el('busyIcon').style.borderTopColor=t>=7.8?'transparent':'transparent';
+  el('busyIcon').textContent=t>=7.8?'✓':'';
+  el('busyIcon').style.width=t>=7.8?'13px':'12px';
+  el('busyIcon').style.height=t>=7.8?'16px':'12px';
+}
+function tick(now){if(playing)applyFrame(((now-start)/1000)%TOTAL);requestAnimationFrame(tick)}
+function resize(){const s=Math.min(innerWidth/1600,innerHeight/900);el('stage').style.transform=`scale(${s})`}
+addEventListener('resize',resize);resize();applyFrame(0);requestAnimationFrame(tick);
+window.renderAt=(t)=>{playing=false;applyFrame(t)};
+window.playDepth=()=>{playing=true;start=performance.now()};
+</script>
+</body></html>
