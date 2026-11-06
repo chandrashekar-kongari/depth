@@ -2,7 +2,13 @@ import Link from "next/link";
 import { ThemeControl } from "@/components/theme-control";
 import { Wordmark } from "@/components/wordmark";
 
-const columns = [
+type FooterLink = {
+  href: string;
+  label: string;
+  external?: boolean;
+};
+
+const columns: { title: string; links: FooterLink[] }[] = [
   {
     title: "Platform",
     links: [
@@ -17,13 +23,23 @@ const columns = [
       { href: "/pilot", label: "Pilot form" },
     ],
   },
+  {
+    title: "Contact us",
+    links: [
+      {
+        href: "https://www.linkedin.com/company/godepth/home/",
+        label: "LinkedIn",
+        external: true,
+      },
+    ],
+  },
 ];
 
 export function Footer() {
   return (
     <footer data-line>
       <div className="rail grid-layout pb-12 pt-[104px]">
-        <div className="grid gap-12 md:grid-cols-[minmax(0,1.2fr)_repeat(2,minmax(0,160px))]">
+        <div className="grid gap-12 md:grid-cols-[minmax(0,1.2fr)_repeat(3,minmax(0,160px))]">
           <div>
             <Link href="/" aria-label="Depth home">
               <Wordmark />
@@ -40,12 +56,23 @@ export function Footer() {
               <ul className="mt-4 space-y-3">
                 {column.links.map((link) => (
                   <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-[14px] font-medium leading-4 hover:text-brand-base"
-                    >
-                      {link.label}
-                    </Link>
+                    {link.external ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[14px] font-medium leading-4 hover:text-brand-base"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-[14px] font-medium leading-4 hover:text-brand-base"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>

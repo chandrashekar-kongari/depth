@@ -37,19 +37,9 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="inline-flex h-16 items-center gap-1 px-2.5 text-[14px] font-medium leading-[14px] text-foreground-primary transition-colors hover:text-foreground-primary"
+                className="inline-flex h-16 items-center px-2.5 text-[14px] font-medium leading-[14px] text-foreground-primary transition-colors hover:text-foreground-primary"
               >
                 {link.label}
-                <svg
-                  viewBox="0 0 24 24"
-                  className="size-4 shrink-0 text-foreground-secondary"
-                  aria-hidden
-                >
-                  <path
-                    d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"
-                    fill="currentColor"
-                  />
-                </svg>
               </Link>
             ))}
           </nav>
