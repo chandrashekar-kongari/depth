@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img"><defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#020D10"/><stop offset="53%" stop-color="#06221F"/><stop offset="100%" stop-color="#001310"/></linearGradient>
+  <radialGradient id="glowbg" cx="49%" cy="88%" r="78%"><stop offset="0%" stop-color="#007D65" stop-opacity=".67"/><stop offset="40%" stop-color="#006751" stop-opacity=".13"/><stop offset="100%" stop-color="#001914" stop-opacity="0"/></radialGradient>
+  <radialGradient id="glowbg2" cx="88%" cy="7%" r="60%"><stop offset="0%" stop-color="#00C49D" stop-opacity=".27"/><stop offset="100%" stop-color="#00D8AA" stop-opacity="0"/></radialGradient>
+  <linearGradient id="mint" x1=".02" y1="0" x2=".9" y2="1"><stop offset="0%" stop-color="#7DFFE0"/><stop offset="40%" stop-color="#2BF3C8"/><stop offset="100%" stop-color="#00B990"/></linearGradient>
+  <linearGradient id="mintTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#8FFFE5"/><stop offset="55%" stop-color="#31E7BC"/><stop offset="100%" stop-color="#00A982"/></linearGradient>
+  <linearGradient id="mintLower" x1="0" y1="1" x2="1" y2="0"><stop offset="0%" stop-color="#00FFD0"/><stop offset="45%" stop-color="#00EDC0"/><stop offset="100%" stop-color="#0C9E84"/></linearGradient>
+  <linearGradient id="ribbon" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0CF9C7"/><stop offset="20%" stop-color="#00CDA8"/><stop offset="75%" stop-color="#00675C"/><stop offset="100%" stop-color="#02322C"/></linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#00483E" stop-opacity=".9"/><stop offset="45%" stop-color="#04231F" stop-opacity=".87"/><stop offset="100%" stop-color="#001510" stop-opacity=".93"/></linearGradient>
+  <linearGradient id="glassedge" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#34F6D1"/><stop offset="60%" stop-color="#9BFFE9"/><stop offset="100%" stop-color="#20C9A4"/></linearGradient>
+  <linearGradient id="whitefade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#D6F8F2"/></linearGradient>
+  <pattern id="grid" width="65" height="65" patternUnits="userSpaceOnUse"><path d="M65 0H0V65" stroke="#13C3A4" stroke-width="1" stroke-opacity=".10" fill="none"/></pattern>
+  <pattern id="gridSmall" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" stroke="#18D5B0" stroke-width=".8" stroke-opacity=".12" fill="none"/></pattern>
+  <filter id="mintGlow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="18"/></filter>
+  <filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="8"/></filter>
+  <filter id="drop" x="-100%" y="-100%" width="300%" height="300%"><feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#00D6AE" flood-opacity=".16"/></filter>
+  <clipPath id="circleClip"><circle cx="512" cy="512" r="484"/></clipPath>
+</defs><rect x="36" y="36" width="440" height="440" rx="100" fill="#062D27" stroke="#1BECC2" stroke-opacity=".7" stroke-width="3"/><g transform="translate(138,138) scale(6.911764705882353)" stroke="#00E6B8" stroke-width="2" fill="none" stroke-linejoin="round"><path d="M2 12l15-9 15 9-15 9Z"/><path d="M2 18l15 9 15-9M2 24l15 9 15-9"/></g></svg>

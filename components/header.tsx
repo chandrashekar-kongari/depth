@@ -6,7 +6,6 @@ import { ButtonLink } from "@/components/button-link";
 import { Wordmark } from "@/components/wordmark";
 
 const links = [
-  { href: "/#platform", label: "Platform" },
   { href: "/#deployment", label: "Deployment" },
   { href: "/#direction", label: "Product direction" },
   { href: "/#pilot", label: "Pilot" },
@@ -56,7 +55,7 @@ export function Header() {
           </nav>
           <div className="relative z-10 ml-auto flex items-center gap-2">
             <ButtonLink
-              href="/#platform"
+              href="/#deployment"
               variant="secondary"
               size="header"
               className="max-[720px]:hidden"

@@ -6,8 +6,8 @@ const columns = [
   {
     title: "Platform",
     links: [
-      { href: "/#platform", label: "Review queue" },
       { href: "/#deployment", label: "Deployment" },
+      { href: "/#storage", label: "Private storage" },
     ],
   },
   {

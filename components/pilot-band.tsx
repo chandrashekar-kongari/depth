@@ -6,7 +6,7 @@ export function PilotBand() {
   return (
     <section id="pilot" data-line className="relative">
       <div className="relative overflow-hidden border-b border-border-line">
-        <div className="pointer-events-none absolute inset-0 [mask-image:linear-gradient(90deg,transparent_0%,#000_55%)]">
+        <div className="pointer-events-none absolute inset-y-0 left-1/2 w-full max-w-[1088px] -translate-x-1/2 overflow-hidden [mask-image:linear-gradient(90deg,transparent_0%,#000_55%)]">
           <LineField />
         </div>
         <div className="rail grid-layout relative flex flex-col gap-6 py-10 lg:h-[139px] lg:flex-row lg:items-center lg:justify-between lg:py-0">

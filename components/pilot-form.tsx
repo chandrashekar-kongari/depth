@@ -44,9 +44,13 @@ export function PilotForm() {
       const payload = (await response.json().catch(() => null)) as {
         ok?: boolean;
         id?: string;
+        error?: string;
       } | null;
       if (!response.ok || !payload?.ok || !payload.id) {
-        setSubmitError("We couldn’t save this request. Nothing was recorded.");
+        setSubmitError(
+          payload?.error ??
+            "We couldn’t save this request. Nothing was recorded.",
+        );
         return;
       }
       setSavedId(payload.id);

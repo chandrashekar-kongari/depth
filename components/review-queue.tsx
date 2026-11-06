@@ -1,12 +1,8 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
-import {
-  BracketDrawing,
-  CoverDrawing,
-  ShaftDrawing,
-  Thumb,
-} from "@/components/drawings";
+import { Thumb } from "@/components/drawings";
+import { ThemeImage } from "@/components/theme-image";
 
 const rows = [
   {
@@ -109,80 +105,38 @@ export function ReviewQueue() {
           </Card>
           <Card title="Drawing Revision">
             <Label>Review status</Label>
-            <ul className="mt-6 space-y-4">
-              {[
-                ["In Review", "2"],
-                ["Changes requested", "1"],
-                ["Approved", "1"],
-                ["Awaiting Review", "1"],
-              ].map(([label, count]) => (
-                <li
-                  key={label}
-                  className="flex items-center justify-between border-b border-border-primary pb-3 text-[14px]"
-                >
-                  <span>{label}</span>
-                  <span className="font-mono text-[12px] text-brand-base">
-                    {count}
-                  </span>
-                </li>
-              ))}
-            </ul>
+            <div className="mt-3 min-h-0 flex-1">
+              <ThemeImage
+                name="05-review-status"
+                alt="Illustrative review status for drawings in the queue"
+              />
+            </div>
           </Card>
           <Card title="Drawing Details">
             <Label>Drawing details</Label>
             <div className="mt-3 min-h-0 flex-1">
-              <CoverDrawing className="h-full max-h-[240px]" />
+              <ThemeImage
+                name="02-drawing-details"
+                alt="Illustrative mechanical drawing sheet"
+              />
             </div>
           </Card>
           <Card title="Who can review">
             <Label>In Review</Label>
-            <ul className="mt-5 space-y-4 text-[14px]">
-              {[
-                ["A. Shah", "Design engineer", "In Review"],
-                ["M. Ortiz", "Checker", "Awaiting Review"],
-                ["L. Chen", "Manufacturing", "Awaiting Review"],
-              ].map(([name, role, state]) => (
-                <li
-                  key={name}
-                  className="flex items-start justify-between gap-3"
-                >
-                  <span>
-                    <span className="block font-medium">{name}</span>
-                    <span className="text-[12px] text-foreground-secondary">
-                      {role}
-                    </span>
-                  </span>
-                  <span className="text-[12px] text-foreground-tertiary">
-                    {state}
-                  </span>
-                </li>
-              ))}
-            </ul>
+            <div className="mt-3 min-h-0 flex-1">
+              <ThemeImage
+                name="03-reviewer-workflow"
+                alt="Illustrative reviewers assigned to a drawing"
+              />
+            </div>
           </Card>
           <Card title="Revision history">
             <Label>Drawing revision</Label>
-            <ol className="mt-5 space-y-4 border-l border-border-secondary pl-4 text-[14px]">
-              {[
-                ["Rev C", "12 Mar 2026", "In Review"],
-                ["Rev B", "02 Feb 2026", "Superseded"],
-                ["Rev A", "14 Jan 2026", "Superseded"],
-              ].map(([rev, date, state]) => (
-                <li key={rev}>
-                  <p className="font-medium">{rev}</p>
-                  <p className="text-[12px] text-foreground-secondary">
-                    {date} · {state}
-                  </p>
-                </li>
-              ))}
-            </ol>
-          </Card>
-          <Card title="Drawing Details" className="lg:col-span-3">
-            <Label>Drawing details</Label>
-            <div className="mt-3 grid gap-4 lg:grid-cols-[1.4fr_0.8fr]">
-              <BracketDrawing className="max-h-[250px]" />
-              <div className="hidden lg:block">
-                <ShaftDrawing className="max-h-[250px]" />
-              </div>
+            <div className="mt-3 min-h-0 flex-1">
+              <ThemeImage
+                name="04-revision-history"
+                alt="Illustrative revision history for a drawing"
+              />
             </div>
           </Card>
         </div>

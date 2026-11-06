@@ -1,0 +1,17 @@
+{
+  "name": "Depth",
+  "tagline": "AI drawing review for engineering teams",
+  "colors": {
+    "mint": "#00E6B8",
+    "mist": "#60F9D8",
+    "teal": "#009F83",
+    "forest": "#05312D",
+    "ink": "#021417",
+    "white": "#FBFFFE"
+  },
+  "fonts": [
+    "Inter",
+    "Inter Display"
+  ],
+  "logo_description": "Original vector recreation of the folded geometric D from the supplied reference aesthetic."
+}

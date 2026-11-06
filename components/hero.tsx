@@ -3,7 +3,6 @@
 import { motion, useReducedMotion } from "motion/react";
 import { ButtonLink } from "@/components/button-link";
 import { LineField } from "@/components/line-field";
-import { ReviewSurface } from "@/components/review-surface";
 
 export function Hero() {
   const reduce = useReducedMotion();
@@ -12,15 +11,15 @@ export function Hero() {
     : { initial: { opacity: 0, y: 12 }, animate: { opacity: 1, y: 0 } };
 
   return (
-    <section className="relative min-h-[797px] overflow-x-clip lg:min-h-[992px]">
+    <section className="relative overflow-x-clip">
       <div className="absolute inset-0 [mask-image:linear-gradient(90deg,transparent_0%,transparent_34%,#000_43%,#000_100%)]">
         <LineField />
       </div>
-      <div className="grid-layout relative z-10 px-4 pt-10 min-[1120px]:px-0 lg:pt-20">
+      <div className="grid-layout relative z-10 px-4 pb-16 pt-10 min-[1120px]:px-0 lg:pb-24 lg:pt-20">
         <motion.div
           {...rise}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-[352px]"
+          className="max-w-[720px]"
         >
           <p className="inline-flex h-[34px] items-center gap-1.5 rounded-[2px] border border-border-primary bg-base-default py-1 pl-2.5 pr-1">
             <span className="text-[12px] font-medium leading-4 tracking-[0.24px] text-foreground-primary/80">
@@ -47,21 +46,26 @@ export function Hero() {
           </p>
           <div className="mt-8 flex flex-wrap gap-2">
             <ButtonLink href="/#pilot">Join the Pilot</ButtonLink>
-            <ButtonLink href="/#platform" variant="secondary">
+            <ButtonLink href="/#deployment" variant="secondary">
               Explore Depth
             </ButtonLink>
           </div>
         </motion.div>
+        <motion.div
+          className="relative z-10 mt-12 hidden lg:mt-16 lg:block"
+          initial={reduce ? undefined : { opacity: 0, y: 16 }}
+          animate={reduce ? undefined : { opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <img
+            src="/illustrations/floating-cad-review.png"
+            alt="Illustrative drawing review"
+            width={1672}
+            height={941}
+            className="h-auto w-full"
+          />
+        </motion.div>
       </div>
-      <motion.div
-        className="relative z-10 mx-4 mt-10 h-[460px] sm:mx-auto sm:max-w-[1088px] lg:absolute lg:left-[calc(50%-129px)] lg:top-[351px] lg:mx-0 lg:mt-0 lg:h-[641px] lg:w-[1055px]"
-        initial={reduce ? undefined : { opacity: 0, x: 28 }}
-        animate={reduce ? undefined : { opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <ReviewSurface />
-        <p className="sr-only">Drawing review queue.</p>
-      </motion.div>
     </section>
   );
 }

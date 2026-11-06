@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080" role="img"><defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#020D10"/><stop offset="53%" stop-color="#06221F"/><stop offset="100%" stop-color="#001310"/></linearGradient>
+  <radialGradient id="glowbg" cx="49%" cy="88%" r="78%"><stop offset="0%" stop-color="#007D65" stop-opacity=".67"/><stop offset="40%" stop-color="#006751" stop-opacity=".13"/><stop offset="100%" stop-color="#001914" stop-opacity="0"/></radialGradient>
+  <radialGradient id="glowbg2" cx="88%" cy="7%" r="60%"><stop offset="0%" stop-color="#00C49D" stop-opacity=".27"/><stop offset="100%" stop-color="#00D8AA" stop-opacity="0"/></radialGradient>
+  <linearGradient id="mint" x1=".02" y1="0" x2=".9" y2="1"><stop offset="0%" stop-color="#7DFFE0"/><stop offset="40%" stop-color="#2BF3C8"/><stop offset="100%" stop-color="#00B990"/></linearGradient>
+  <linearGradient id="mintTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#8FFFE5"/><stop offset="55%" stop-color="#31E7BC"/><stop offset="100%" stop-color="#00A982"/></linearGradient>
+  <linearGradient id="mintLower" x1="0" y1="1" x2="1" y2="0"><stop offset="0%" stop-color="#00FFD0"/><stop offset="45%" stop-color="#00EDC0"/><stop offset="100%" stop-color="#0C9E84"/></linearGradient>
+  <linearGradient id="ribbon" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0CF9C7"/><stop offset="20%" stop-color="#00CDA8"/><stop offset="75%" stop-color="#00675C"/><stop offset="100%" stop-color="#02322C"/></linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#00483E" stop-opacity=".9"/><stop offset="45%" stop-color="#04231F" stop-opacity=".87"/><stop offset="100%" stop-color="#001510" stop-opacity=".93"/></linearGradient>
+  <linearGradient id="glassedge" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#34F6D1"/><stop offset="60%" stop-color="#9BFFE9"/><stop offset="100%" stop-color="#20C9A4"/></linearGradient>
+  <linearGradient id="whitefade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#D6F8F2"/></linearGradient>
+  <pattern id="grid" width="65" height="65" patternUnits="userSpaceOnUse"><path d="M65 0H0V65" stroke="#13C3A4" stroke-width="1" stroke-opacity=".10" fill="none"/></pattern>
+  <pattern id="gridSmall" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" stroke="#18D5B0" stroke-width=".8" stroke-opacity=".12" fill="none"/></pattern>
+  <filter id="mintGlow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="18"/></filter>
+  <filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="8"/></filter>
+  <filter id="drop" x="-100%" y="-100%" width="300%" height="300%"><feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#00D6AE" flood-opacity=".16"/></filter>
+  <clipPath id="circleClip"><circle cx="512" cy="512" r="484"/></clipPath>
+</defs><rect width="1080" height="1080" fill="url(#bg)"/><rect width="1080" height="1080" fill="url(#glowbg)"/><rect width="1080" height="1080" fill="url(#glowbg2)"/><rect width="1080" height="1080" fill="url(#grid)" opacity=".52"/><path d="M0 875H1080 M0 929H1080 M0 1004H1080" stroke="#06A88F" stroke-opacity=".12"/><g transform="translate(71.0,63.0) scale(0.28276)"><g>
+<path d="M67 0 H172 C244 0 290 43 290 103 C290 187 231 248 137 262 H0 L39 155 H168 C196 155 212 140 212 116 C212 99 196 93 172 93 H34 Z" fill="url(#mintTop)"/>
+<path d="M39 155 H212 C205 200 177 251 137 262 H0 Z" fill="url(#mintLower)"/>
+<path d="M34 93 H78 Q58 106 56 130 Z" fill="#037A68" opacity=".93"/>
+<path d="M67 0 H172 C244 0 290 43 290 103" fill="none" stroke="#C8FFED" stroke-width="1.1" stroke-opacity=".46"/>
+</g></g><text x="168.0" y="129.4" font-family="Inter, Arial, sans-serif" font-size="56.6" font-weight="750" letter-spacing="-3.11" fill="#FFFFFF">depth</text><text x="73" y="328.0" font-family="Inter,Arial,sans-serif" font-size="78" font-weight="740" fill="white" opacity="1" letter-spacing="-2.964">Review drawings</text><text x="73" y="418.48" font-family="Inter,Arial,sans-serif" font-size="78" font-weight="740" fill="white" opacity="1" letter-spacing="-2.964">faster.</text><text x="77" y="528" font-family="Inter,Arial,sans-serif" font-size="25" font-weight="500" fill="#B2DCD2" opacity="1">AI-assisted checks for engineering teams.</text><g transform="translate(365,640) scale(0.89)" opacity="0.66">
+    <path d="M0 0 H260 Q290 0 311 26 L480 205 H330 L98 68 Q56 30 0 30 Q-25 20 0 0Z" fill="#00D5AD" opacity=".17" filter="url(#mintGlow)"/>
+    <path d="M0 0 H260 Q290 0 311 26 L480 205 H330 L98 68 Q56 30 0 30 Q-25 20 0 0Z" fill="url(#ribbon)" stroke="#00E9C6" stroke-width="2"/>
+    <path d="M360 -13 H610 Q645 -13 668 10 L854 208 H699 L490 69 Q450 26 360 20 Q338 6 360 -13Z" fill="url(#ribbon)" stroke="#00ECC2" stroke-width="2"/>
+    <path d="M0 0 H260 Q290 0 311 26" fill="none" stroke="#AAFFEB" stroke-opacity=".46" stroke-width="2"/>
+    </g><g transform="translate(465,620) rotate(-5) scale(0.82031,0.80000)" opacity="0.87">
+    <rect x="0" y="0" width="640" height="450" rx="22" fill="url(#glass)" stroke="#31F6CF" stroke-width="2.5" filter="url(#drop)"/>
+    <rect x="22" y="22" width="596" height="406" rx="4" stroke="#9EFFEA" stroke-width="1" opacity=".3" fill="url(#gridSmall)"/>
+    <g stroke="#D6FFF9" fill="none" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M145 292 L175 176 Q180 168 199 168 H232 Q261 166 271 142 L282 120 Q299 85 337 88 Q370 92 381 121 L390 154 Q395 174 417 174 H498 L505 292 Z"/>
+      <circle cx="334" cy="148" r="29"/><circle cx="334" cy="148" r="16" stroke-width="1.4"/>
+    </g>
+    <g stroke="#9CE9DF" stroke-width="1.15" fill="none" opacity=".92"><path d="M334 76V223" stroke-dasharray="8 7"/><path d="M259 148H407" stroke-dasharray="8 7"/>
+      <path d="M145 295V339M505 295V339M145 330H505"/>
+      <path d="M145 330l12-4v8Z M505 330l-12-4v8Z" fill="#D2FFF5"/>
+      <path d="M145 292H116M175 176H116M124 176V292"/>
+      <path d="M124 176l-4 13h8Z M124 292l-4-13h8Z" fill="#D2FFF5"/>
+      <path d="M336 115L388 63H420"/><path d="M360 137L493 52"/>
+    </g>
+    <g font-family="Inter,Arial,sans-serif" fill="#E6FFF9" font-size="19"><text x="298" y="320">50.8</text><text x="110" y="252" transform="rotate(-90 110 252)">25.4</text><text x="391" y="53" font-size="17">Ø10.0</text></g>
+    <g transform="translate(471 34)" font-family="Inter,Arial,sans-serif" font-size="16" fill="#F0FFFC" stroke="#C7FFF4" stroke-width="1.5"><rect width="128" height="35" fill="#023A32"/><path d="M42 0V35 M88 0V35"/><text x="13" y="24" fill="white" stroke="none">⊥</text><text x="47" y="24" fill="white" stroke="none">0.1</text><text x="101" y="24" fill="white" stroke="none">A</text></g>
+    <g stroke="#2AE9C0" opacity=".42"><path d="M38 373H602M38 398H602"/><path d="M38 374V428M602 374V428"/></g>
+    <text x="49" y="392" fill="#9CE2D5" font-family="Inter" font-size="10" letter-spacing="2">DEPTH / ENGINEERING REVIEW</text><text x="49" y="419" fill="#D7FFF7" font-family="Inter" font-size="12" font-weight="650">MOUNTING BRACKET — REV B</text>
+    </g><text x="74" y="1025" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="740" fill="#91F7DE" opacity="1" letter-spacing="2.4">01 / 03</text></svg>

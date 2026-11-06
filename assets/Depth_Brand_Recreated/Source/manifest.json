@@ -1,0 +1,206 @@
+[
+  {
+    "folder": "Brand",
+    "name": "01-depth-mark-gradient",
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "folder": "Brand",
+    "name": "02-depth-mark-white",
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "folder": "Brand",
+    "name": "03-depth-logo-on-dark",
+    "width": 900,
+    "height": 230
+  },
+  {
+    "folder": "Brand",
+    "name": "04-depth-logo-on-light",
+    "width": 900,
+    "height": 230
+  },
+  {
+    "folder": "Brand",
+    "name": "05-depth-symbol-app-icon",
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "folder": "Brand",
+    "name": "06-depth-favicon",
+    "width": 512,
+    "height": 512
+  },
+  {
+    "folder": "Brand",
+    "name": "07-logo-horizontal-dark-background",
+    "width": 1400,
+    "height": 420
+  },
+  {
+    "folder": "Brand",
+    "name": "08-logo-horizontal-light-background",
+    "width": 1400,
+    "height": 420
+  },
+  {
+    "folder": "LinkedIn",
+    "name": "01-company-avatar-1024",
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "folder": "LinkedIn",
+    "name": "02-profile-background-template",
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "folder": "LinkedIn",
+    "name": "03-personal-banner-1584x396",
+    "width": 1584,
+    "height": 396
+  },
+  {
+    "folder": "LinkedIn",
+    "name": "04-personal-banner-alt-1584x396",
+    "width": 1584,
+    "height": 396
+  },
+  {
+    "folder": "LinkedIn",
+    "name": "05-company-cover-1512x256",
+    "width": 1512,
+    "height": 256
+  },
+  {
+    "folder": "LinkedIn",
+    "name": "06-company-cover-legacy-1128x191",
+    "width": 1128,
+    "height": 191
+  },
+  {
+    "folder": "Web",
+    "name": "01-master-hero-banner-1920x490",
+    "width": 1920,
+    "height": 490
+  },
+  {
+    "folder": "Web",
+    "name": "02-homepage-hero-1920x1080",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "folder": "Web",
+    "name": "03-hero-background-only-1920x1080",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "folder": "Web",
+    "name": "04-cad-drawing-illustration-1600x900",
+    "width": 1600,
+    "height": 900
+  },
+  {
+    "folder": "Web",
+    "name": "05-presentation-cover-1920x1080",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "folder": "Web",
+    "name": "06-email-signature-banner-1200x300",
+    "width": 1200,
+    "height": 300
+  },
+  {
+    "folder": "Social",
+    "name": "01-product-launch-square-1080",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "folder": "Social",
+    "name": "02-linkedin-portrait-1080x1350",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "folder": "Social",
+    "name": "03-engineering-ai-square-1080",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "folder": "Social",
+    "name": "04-carousel-slide-1-1080",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "folder": "Social",
+    "name": "04-carousel-slide-2-1080",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "folder": "Social",
+    "name": "04-carousel-slide-3-1080",
+    "width": 1080,
+    "height": 1080
+  },
+  {
+    "folder": "Social",
+    "name": "05-link-preview-1200x630",
+    "width": 1200,
+    "height": 630
+  },
+  {
+    "folder": "Social",
+    "name": "06-social-header-1500x500",
+    "width": 1500,
+    "height": 500
+  },
+  {
+    "folder": "Social",
+    "name": "07-features-4-up-1440x900",
+    "width": 1440,
+    "height": 900
+  },
+  {
+    "folder": "Icons",
+    "name": "01-drawing-review",
+    "width": 512,
+    "height": 512
+  },
+  {
+    "folder": "Icons",
+    "name": "02-revision-compare",
+    "width": 512,
+    "height": 512
+  },
+  {
+    "folder": "Icons",
+    "name": "03-guideline-checks",
+    "width": 512,
+    "height": 512
+  },
+  {
+    "folder": "Icons",
+    "name": "04-issue-detection",
+    "width": 512,
+    "height": 512
+  },
+  {
+    "folder": "Brand",
+    "name": "09-brand-style-guide-1440x800",
+    "width": 1440,
+    "height": 800
+  }
+]

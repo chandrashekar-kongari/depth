@@ -23,6 +23,19 @@ export const metadata: Metadata = {
   title: "Depth — Engineering drawing reviews, brought into focus.",
   description:
     "Depth is building a dedicated workspace for mechanical drawing reviews, helping teams organize drawings, revisions, and review work while keeping control of their engineering data.",
+  openGraph: {
+    title: "Depth — Engineering drawing reviews, brought into focus.",
+    description:
+      "Depth is building a dedicated workspace for mechanical drawing reviews, helping teams organize drawings, revisions, and review work while keeping control of their engineering data.",
+    images: [
+      {
+        url: "/brand/link-preview.png",
+        width: 1200,
+        height: 630,
+        alt: "Depth, a private platform for mechanical drawing reviews",
+      },
+    ],
+  },
 };
 
 const themeScript = `

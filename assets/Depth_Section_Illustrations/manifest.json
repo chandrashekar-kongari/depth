@@ -1,0 +1,173 @@
+[
+  {
+    "name": "Drawing Review Queue",
+    "slug": "01-drawing-review-queue",
+    "usage": "Queue section; use as illustration above or beside your product text.",
+    "size": [
+      1200,
+      800
+    ],
+    "variants": {
+      "dark": {
+        "svg": "svg/dark/01-drawing-review-queue.svg",
+        "png": "png/dark/01-drawing-review-queue.png"
+      },
+      "light": {
+        "svg": "svg/light/01-drawing-review-queue.svg",
+        "png": "png/light/01-drawing-review-queue.png"
+      }
+    }
+  },
+  {
+    "name": "Drawing Details",
+    "slug": "02-drawing-details",
+    "usage": "Detailed mechanical CAD sheet for the Drawing Details section.",
+    "size": [
+      1200,
+      800
+    ],
+    "variants": {
+      "dark": {
+        "svg": "svg/dark/02-drawing-details.svg",
+        "png": "png/dark/02-drawing-details.png"
+      },
+      "light": {
+        "svg": "svg/light/02-drawing-details.svg",
+        "png": "png/light/02-drawing-details.png"
+      }
+    }
+  },
+  {
+    "name": "Who Can Review",
+    "slug": "03-reviewer-workflow",
+    "usage": "Assigned reviewers and review state artwork.",
+    "size": [
+      1200,
+      800
+    ],
+    "variants": {
+      "dark": {
+        "svg": "svg/dark/03-reviewer-workflow.svg",
+        "png": "png/dark/03-reviewer-workflow.png"
+      },
+      "light": {
+        "svg": "svg/light/03-reviewer-workflow.svg",
+        "png": "png/light/03-reviewer-workflow.png"
+      }
+    }
+  },
+  {
+    "name": "Revision History",
+    "slug": "04-revision-history",
+    "usage": "Stacked revisions and revision timeline artwork.",
+    "size": [
+      1200,
+      800
+    ],
+    "variants": {
+      "dark": {
+        "svg": "svg/dark/04-revision-history.svg",
+        "png": "png/dark/04-revision-history.png"
+      },
+      "light": {
+        "svg": "svg/light/04-revision-history.svg",
+        "png": "png/light/04-revision-history.png"
+      }
+    }
+  },
+  {
+    "name": "Review Status",
+    "slug": "05-review-status",
+    "usage": "Review states and progress visualization.",
+    "size": [
+      1200,
+      800
+    ],
+    "variants": {
+      "dark": {
+        "svg": "svg/dark/05-review-status.svg",
+        "png": "png/dark/05-review-status.png"
+      },
+      "light": {
+        "svg": "svg/light/05-review-status.svg",
+        "png": "png/light/05-review-status.png"
+      }
+    }
+  },
+  {
+    "name": "Deployment & Data Control",
+    "slug": "06-private-deployment",
+    "usage": "Customer-controlled environment boundary with local components.",
+    "size": [
+      1200,
+      800
+    ],
+    "variants": {
+      "dark": {
+        "svg": "svg/dark/06-private-deployment.svg",
+        "png": "png/dark/06-private-deployment.png"
+      },
+      "light": {
+        "svg": "svg/light/06-private-deployment.svg",
+        "png": "png/light/06-private-deployment.png"
+      }
+    }
+  },
+  {
+    "name": "AI Drawing Review",
+    "slug": "07-ai-drawing-review",
+    "usage": "Illustrative future AI-assisted issue detection and verification.",
+    "size": [
+      1200,
+      800
+    ],
+    "variants": {
+      "dark": {
+        "svg": "svg/dark/07-ai-drawing-review.svg",
+        "png": "png/dark/07-ai-drawing-review.png"
+      },
+      "light": {
+        "svg": "svg/light/07-ai-drawing-review.svg",
+        "png": "png/light/07-ai-drawing-review.png"
+      }
+    }
+  },
+  {
+    "name": "3D-to-2D Drawing",
+    "slug": "08-3d-to-2d",
+    "usage": "Illustrative planned 3D model to 2D drawing workflow.",
+    "size": [
+      1200,
+      800
+    ],
+    "variants": {
+      "dark": {
+        "svg": "svg/dark/08-3d-to-2d.svg",
+        "png": "png/dark/08-3d-to-2d.png"
+      },
+      "light": {
+        "svg": "svg/light/08-3d-to-2d.svg",
+        "png": "png/light/08-3d-to-2d.png"
+      }
+    }
+  },
+  {
+    "name": "Private Drawing Storage",
+    "slug": "09-private-drawing-storage",
+    "usage": "Optional IP protection and secure file storage illustration.",
+    "size": [
+      1200,
+      800
+    ],
+    "variants": {
+      "dark": {
+        "svg": "svg/dark/09-private-drawing-storage.svg",
+        "png": "png/dark/09-private-drawing-storage.png"
+      },
+      "light": {
+        "svg": "svg/light/09-private-drawing-storage.svg",
+        "png": "png/light/09-private-drawing-storage.png"
+      }
+    }
+  }
+]
