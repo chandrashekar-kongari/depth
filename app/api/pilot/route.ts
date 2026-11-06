@@ -30,19 +30,11 @@ export async function POST(request: Request) {
     ...parsed.data,
   };
 
+  let saved = false;
   try {
-    const saved = await savePilotSubmission(record);
-    if (!saved) {
-      return Response.json(
-        { ok: false, error: "The request was not saved." },
-        { status: 500 },
-      );
-    }
-  } catch {
-    return Response.json(
-      { ok: false, error: "The request was not saved." },
-      { status: 500 },
-    );
+    saved = await savePilotSubmission(record);
+  } catch (error) {
+    console.error(error);
   }
 
   try {
@@ -52,8 +44,9 @@ export async function POST(request: Request) {
     return Response.json(
       {
         ok: false,
-        error:
-          "The request was saved, but the notification email was not sent.",
+        error: saved
+          ? "The request was saved, but the notification email was not sent."
+          : "The notification email was not sent.",
       },
       { status: 502 },
     );
